@@ -3,10 +3,10 @@ USER = mechane
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;34m
-NAME =
+NAME = PhoneBook
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror 
-FILE = 
+FILE = Contact PhoneBook Add Search
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))

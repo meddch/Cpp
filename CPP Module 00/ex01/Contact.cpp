@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:29:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/24 11:48:59 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/24 17:13:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void Contact::set_darkset_secret(std::string str)
 {
 	_darkest_secret = str;
 }
+void Contact::set_index(int i)
+{
+	_index = i;
+}
 
 const std::string &Contact::get_first_name(void)
 {
@@ -60,4 +64,8 @@ const std::string &Contact::get_phone_number(void)
 const std::string &Contact::get_darkest_secret(void)
 {
 	return (_darkest_secret);
+}
+const int &Contact::get_index(void)
+{
+	return (_index);
 }
