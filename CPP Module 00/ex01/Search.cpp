@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 11:59:13 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/24 17:20:27 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/25 08:51:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	PhoneBook::Search(void)
 			std::cout << std::setw(10) << contacts[i].get_nick_name().substr(0,9) + "." << "|\n";		  
 	}
 	std::cout << "Please enter valid contact :( between 1 and " 
-			<< _size  << ") : \n" << D;
+			<< _size  << ") : \n" << A;
 	while (std::cin.good())
 	{
 		choice = 0;
@@ -48,7 +48,7 @@ void	PhoneBook::Search(void)
     				break;
             else
                std::cout << "Please enter valid contact :( between 1 and " 
-			<< _size  << ") : \n" << D;
+			<< _size  << ") : \n" << A;
 		}
        	else
 		{
@@ -59,9 +59,9 @@ void	PhoneBook::Search(void)
 	}
 	if (!choice)
 		exit(0);
-	std::cout << A << contacts[choice - 1].get_first_name() << std::endl;
-	std::cout << contacts[choice - 1].get_last_name() << std::endl;
-	std::cout << contacts[choice - 1].get_nick_name() << std::endl;
-	std::cout << contacts[choice - 1].get_phone_number() << std::endl;
-	std::cout << contacts[choice - 1].get_darkest_secret() << std::endl;
+	std::cout << D << "First name     : " << contacts[choice - 1].get_first_name() << std::endl;
+	std::cout << "Last Name      : " << contacts[choice - 1].get_last_name() << std::endl;
+	std::cout << "Nickname       : " << contacts[choice - 1].get_nick_name() << std::endl;
+	std::cout <<"Phone Number   : " << contacts[choice - 1].get_phone_number() << std::endl;
+	std::cout << "Darkest Secret : "<< contacts[choice - 1].get_darkest_secret() << std::endl;
 }

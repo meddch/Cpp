@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 09:22:46 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/24 17:15:09 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/25 08:56:27 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(void)
 			i++;
 			if (i > 7)
 				i = 0;
-			if (Pk.get_size() <= 8)
+			if (Pk.get_size() < 8)
 				Pk.set_size(Pk.get_size() + 1);
 		}
 		else if (!tmp.compare("SEARCH"))

@@ -7,11 +7,12 @@ NAME = PhoneBook
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror 
 FILE = Contact PhoneBook Add Search
+HEADERS = PhoneBook.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
 
-%.o : %.cpp 
+%.o : %.cpp $(HEADERS)
 	@echo "$(BLUE)Building project ⏳.."
 	@$(CC) $(CPPFLAGS)  -c -o $@ $< 
 
