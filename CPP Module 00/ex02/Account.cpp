@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:21:47 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/25 11:41:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/25 15:04:13 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int	Account::checkAmount(void) const
 		return 1;
 	return 0;
 }
-// Geters
+// Getters
 int	Account::getNbAccounts(void)
 {
 	return Account::_nbAccounts;
