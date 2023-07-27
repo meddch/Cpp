@@ -2,16 +2,15 @@ CC = c++
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;34m
-NAME = violence
+NAME = Sedoo
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main Weapon HumanA HumanB
-HEADERS = HumanA.hpp HumanB.hpp Weapon.hpp
+FILE =  main 
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
 
-%.o : %.cpp $(HEADERS)
+%.o : %.cpp 
 	@echo "$(BLUE)Building project ⏳.."
 	@$(CC) $(CPPFLAGS)  -c -o $@ $< 
 

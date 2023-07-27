@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 11:00:05 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/26 14:16:17 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/27 09:17:58 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ int main()
 	Zombie *z = newZombie("Spitter");
 	z->announce();
 	randomChump("Tank");
+	delete z;
 }

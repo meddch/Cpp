@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 12:00:59 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/26 14:11:26 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/27 07:41:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ public :
 	Zombie();
 	Zombie(std::string name);
 	~Zombie(void);
+	void setName(std::string name);
 	void announce(void);
 };
 

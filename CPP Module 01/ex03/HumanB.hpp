@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 15:17:22 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/26 15:57:24 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/27 09:13:35 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@
 
 class	 HumanB
 {
-	Weapon _weapon;
+	Weapon* 	_weapon;
 	std::string _name;
 public :
 	HumanB(std::string name);
-	~HumanB();
-	HumanB();
 	void attack(void);
-	void setWeapon(Weapon weapon);
+	void setWeapon(Weapon &weapon);
 };
 
- #endif
+#endif

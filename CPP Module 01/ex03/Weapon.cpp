@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon.cpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 15:02:10 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/26 16:04:56 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/27 08:56:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ const std::string &Weapon::getType(void)
 	return _type;	
 }
 
-void Weapon::setType(std::string &type)
+void Weapon::setType(std::string type)
 { 
-	_type = &type;
+	_type = type;
 }
 
 Weapon::Weapon(std::string type)
@@ -27,6 +27,5 @@ Weapon::Weapon(std::string type)
 	_type = type;
 }
 
-Weapon::Weapon(){};
 Weapon::~Weapon(){};
 
