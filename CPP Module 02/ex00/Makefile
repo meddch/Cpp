@@ -7,7 +7,7 @@ NAME = harlFilter
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 FILE =  main
-HEADERS = 
+HEADERS =   
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
