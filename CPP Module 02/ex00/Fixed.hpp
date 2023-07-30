@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:07 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/29 11:31:41 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/30 08:56:33 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ public :
 	~Fixed();
 	void setRawBits(int const raw);
 	int getRawBits(void) const;
-
+	Fixed(const Fixed& other);
+	Fixed& operator=(const Fixed& other);
 	
 };
 #endif
