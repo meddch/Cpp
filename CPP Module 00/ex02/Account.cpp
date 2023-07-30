@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:21:47 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/25 15:04:13 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/30 15:57:27 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	Account::_displayTimestamp(void)
 	
 	time(&current);
 	time_inf = localtime(&current);
-	strftime(buf, sizeof(buf), "%Y%m%d_%H%M%S", time_inf);
+	strftime(buf, sizeof(buf), "[%Y%m%d_%H%M%S]", time_inf);
 	std::cout << buf;
 }
 
