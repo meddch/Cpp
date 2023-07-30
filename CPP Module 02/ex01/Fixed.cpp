@@ -6,9 +6,11 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:01 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/30 09:31:42 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/30 14:07:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Fixed.hpp"
 
 #include "Fixed.hpp"
 
@@ -47,4 +49,32 @@ int		Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
 	return this->_value;	
+}
+
+Fixed::Fixed(const int d)
+{
+	std::cout << "INT Constructor called" << std::endl;
+	_value = d << frac_bits;
+}
+
+Fixed::Fixed(const float f)
+{
+	std::cout << "FLOAT Constructor called" << std::endl;
+	_value = roundf((float)f * (1 << frac_bits));
+}
+
+int Fixed::toInt(void) const
+{
+	return (this->_value >> frac_bits);
+}
+
+float Fixed::toFloat(void) const
+{
+	return ((float)(this->_value) / (1 << frac_bits));
+}
+
+std::ostream &operator<<(std::ostream &os, Fixed const &fixed)
+{
+	os << fixed.toFloat();
+	return os;
 }
