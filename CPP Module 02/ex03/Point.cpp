@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:02:54 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/30 17:22:13 by mechane          ###   ########.fr       */
+/*   Updated: 2023/07/31 09:00:38 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Point& Point::operator=(Point const &other)
 	return *this;
 }
 
-int	Point::line_equation(Point const a, Point const b, Point const x)
+int	Point::substitute_point_in_line(Point const a, Point const b, Point const x)
 {
 	Fixed res;
 	

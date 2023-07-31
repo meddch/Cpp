@@ -3,10 +3,10 @@ CC = c++
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;34m
-NAME = Fixed
+NAME = BSP
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main Fixed Bsp point
+FILE =  main Fixed Bsp Point
 HEADERS =   Fixed.hpp Point.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
