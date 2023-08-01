@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:51:59 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/01 12:03:40 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/01 12:07:32 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,16 @@ ScavTrap::~ScavTrap()
 void ScavTrap::guardGate()
 {
     std::cout << "ScavTrap " << _name << " is now in Gate keeper mode." << std::endl;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this == &other)
+		return (*this);
+	this->_name = other._name;
+	this->_Hit_point = other._Hit_point;
+	this->_Energy_point = other._Energy_point;
+	this->_attack_dmg = other._attack_dmg;
+	return *this;
 }
