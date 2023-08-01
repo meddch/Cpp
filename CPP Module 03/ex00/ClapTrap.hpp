@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 09:50:37 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/31 14:03:20 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/01 11:16:31 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ClapTrap
 	
  public :
 
-	ClapTrap(std::string);
+	ClapTrap(std::string name);
 	ClapTrap();
 	~ClapTrap();
 	ClapTrap& operator=(const ClapTrap& other);
