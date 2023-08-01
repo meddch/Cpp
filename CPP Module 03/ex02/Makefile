@@ -6,8 +6,8 @@ BLUE = \033[0;34m
 NAME = 	Fight
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main ClapTrap ScavTrap
-HEADERS =   ScavTrap.hpp
+FILE =  main ClapTrap ScavTrap FragTrap
+HEADERS =   ScavTrap.hpp FragTrap.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
