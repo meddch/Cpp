@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 09:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/02 10:09:29 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/02 10:56:59 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap got destroyed" << std::endl;
+	std::cout << "ClapTrap " << _name << " got destroyed" << std::endl;
 }
 ClapTrap::ClapTrap() : _name("Default"), _Hit_point(10), _Energy_point(10), _attack_dmg(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -49,8 +49,7 @@ void	ClapTrap::attack(const std::string& target)
 	else
 	{
 		_Energy_point--;
-		int damage = _attack_dmg + (std::rand() % 5) + 1;
-		std::cout << "ClapTrap " << _name << " attacks " << target << " causing " << damage << "  points of damage!" << std::endl ;
+		std::cout << "ClapTrap " << _name << " attacks " << target << " causing " << _attack_dmg << "  points of damage!" << std::endl ;
 	} 
 }
 
@@ -77,7 +76,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
         std::cout << "ClapTrap can't be repaired any further. Its hit points are already at the maximum value." << std::endl ;
 	else
 	{
-    	if (_Energy_point == 0)
+		if (_Energy_point == 0)
     	    std::cout << "ClapTrap can't be repaired. It has no energy points left " << std::endl;
 		else
 		{

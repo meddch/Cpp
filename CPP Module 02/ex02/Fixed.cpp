@@ -6,13 +6,12 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:01 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/30 16:18:04 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/02 10:18:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-#include "Fixed.hpp"
 
 Fixed::Fixed() : _value(0)
 {
