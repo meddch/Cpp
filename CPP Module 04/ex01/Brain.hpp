@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 10:57:17 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 13:18:44 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/04 12:10:25 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/04 13:27:31 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 #include <iostream>
+#define MAX_IDEA
 
-class Animal
+class   Brain
 {
-protected :
-    std::string type;
+	std::string _ideas[MAX_IDEA];
+	int			_size;
 public :
-    Animal();
-    Animal(std::string type);
-    virtual ~Animal();
-    Animal& operator=(const Animal& other);
-    Animal(const Animal& other);
-    virtual  void makeSound() const;
-    std::string getType(void) const;
+	Brain();
+	~Brain();
+	Brain& operator=(const Brain& other);
+	Brain(const Brain& other);
+	std::string* get_Ideas() const;
 };
-
 
 #endif

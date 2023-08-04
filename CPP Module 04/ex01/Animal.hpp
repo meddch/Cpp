@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 10:57:17 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 11:58:35 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 13:18:44 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ protected :
 public :
     Animal();
     Animal(std::string type);
-    ~Animal();
+    virtual ~Animal();
     Animal& operator=(const Animal& other);
     Animal(const Animal& other);
     virtual  void makeSound() const;

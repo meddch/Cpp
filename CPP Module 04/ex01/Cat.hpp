@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:33:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 11:57:35 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 13:44:25 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 class Cat : public Animal
 {
+	Brain*	_brain;
 public :
     Cat();
     ~Cat();
