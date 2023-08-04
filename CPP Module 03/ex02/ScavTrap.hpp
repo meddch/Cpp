@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 14:52:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/01 12:13:58 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 08:52:42 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ public:
     ScavTrap();
     ~ScavTrap();
     ScavTrap& operator=(const ScavTrap& other);
+    ScavTrap(const ScavTrap& other);
     void guardGate();
 };
 

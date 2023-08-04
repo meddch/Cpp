@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 08:12:41 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/02 10:54:04 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 08:55:54 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ DiamondTrap::DiamondTrap(std::string name) : ScavTrap(), FragTrap()
 DiamondTrap::~DiamondTrap()
 {
     std::cout << "DiamondTrap " << _name << " Destructor called" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap& other)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = other;
 }
 
 

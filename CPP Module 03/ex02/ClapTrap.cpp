@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 09:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/01 12:03:17 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 08:46:44 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ ClapTrap::ClapTrap(std::string name)
 	_Energy_point = 10;
 	_attack_dmg = 0;
 	std::cout << "Constructor called for " << name << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = other;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)

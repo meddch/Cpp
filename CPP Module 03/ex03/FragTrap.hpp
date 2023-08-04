@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 12:13:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/02 10:36:51 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 08:54:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ public:
     FragTrap();
     ~FragTrap();
     FragTrap& operator=(const FragTrap& other);
+    FragTrap(const FragTrap& other);
     void highFivesGuys();
 };
 

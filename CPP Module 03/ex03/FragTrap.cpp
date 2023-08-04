@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 12:13:04 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/01 13:02:16 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 08:54:05 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ FragTrap::~FragTrap()
 void FragTrap::highFivesGuys()
 {
     std::cout << "FragTrap " << _name << " requests a high five!" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap& other)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = other;
 }
 
 FragTrap& FragTrap::operator=(const FragTrap& other)
