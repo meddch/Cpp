@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 09:22:29 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/05 18:06:28 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/05 19:00:08 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ int	main(int ac, char **av)
 		return (std::cerr << "Error : Unable to create output file.\n",in_file.close(), 1);
 	while (std::getline(in_file, line))
 	{
-		int i = 0;
-		while ((found = line.find(to_replace, i * to_replace.length())) != std::string::npos)
+		int tmp = 0;
+		while ((found = line.find(to_replace, tmp)) != std::string::npos)
 		{
 			line.erase(found, to_replace.length());
 			line.insert(found, new_str);
-			i++;
+			tmp = found - to_replace.length() + new_str.length() + 1;
 		}
 		out_file << line << std::endl;
 	}
