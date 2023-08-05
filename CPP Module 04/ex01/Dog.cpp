@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:38:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/05 07:19:42 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/05 08:35:04 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,9 @@ Dog::Dog(const Dog& other)
 void Dog::makeSound() const
 {
     std::cout << "Bark Bark" << std::endl;
+}
+
+Brain* Dog::get_brain(void)
+{
+	return brain;
 }

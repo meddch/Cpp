@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:33:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/05 08:34:33 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/05 08:25:38 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ Cat::Cat(const Cat& other)
     std::cout << "Cat Copy constructor called" << std::endl;
 	type = "Cat";
 	brain = new Brain();
+	for (int i = 0; i < MAX_IDEA; i++)
+		this->brain->set_Idea(i ,other.brain->get_Idea(i));
 	*this = other;
 
 }

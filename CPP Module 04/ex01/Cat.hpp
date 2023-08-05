@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:33:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 16:06:11 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/05 08:34:49 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ public :
     Cat& operator=(const Cat& other);
     Cat(const Cat& other);
     void makeSound() const;
+	Brain* get_brain(void);
+
 };
 
 

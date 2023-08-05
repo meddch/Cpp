@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:37:59 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/05 08:35:20 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/05 08:26:19 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ public :
     Dog(const Dog& other);
     void makeSound() const;
 	Brain* get_brain(void);
-
 };
 
 

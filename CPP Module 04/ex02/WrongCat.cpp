@@ -1,55 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 11:33:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/05 08:34:33 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/04 13:12:18 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/04 13:16:43 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+
+#include "WrongCat.hpp"
 
 
-Cat::Cat() : Animal("Cat"), brain(new Brain)
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-    std::cout << "Cat constructor called" <<  std::endl;
+    std::cout << "WrongCat constructor called for " <<  std::endl;
 }
 
-Cat::~Cat()
+WrongCat::~WrongCat()
 {
-    delete brain;
-	std::cout << "Cat destructor called" <<  std::endl;
+    std::cout << "WrongCat destructor called" <<  std::endl;
 }
 
-Cat& Cat::operator=(const Cat& other)
+WrongCat& WrongCat::operator=(const WrongCat& other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this == &other)
         return *this;
-	for (int i = 0; i < MAX_IDEA; i++)
-		this->brain->set_Idea(i ,other.brain->get_Idea(i));
-	this->type = other.type;
+    this->type = other.type;
     return *this;
 }
 
-Cat::Cat(const Cat& other)
+WrongCat::WrongCat(const WrongCat& other)
 {
-    std::cout << "Cat Copy constructor called" << std::endl;
-	type = "Cat";
-	brain = new Brain();
-	*this = other;
-
+    std::cout << "Copy constructor called" << std::endl;
+    *this = other;
 }
 
-void Cat::makeSound() const
+void WrongCat::makeSound() const
 {
     std::cout << "Meowww Meoawww" << std::endl;
-}
-
-Brain* Cat::get_brain(void)
-{
-	return brain;
 }

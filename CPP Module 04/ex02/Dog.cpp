@@ -1,55 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/04 11:33:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/05 08:34:33 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/04 11:38:36 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/05 08:26:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
 
-Cat::Cat() : Animal("Cat"), brain(new Brain)
+Dog::Dog() : Animal("Dog"), brain(new Brain)
 {
-    std::cout << "Cat constructor called" <<  std::endl;
+    std::cout << "Dog constructor called" <<  std::endl;
 }
 
-Cat::~Cat()
+Dog::~Dog()
 {
     delete brain;
-	std::cout << "Cat destructor called" <<  std::endl;
+	std::cout << "Dog destructor called " <<  std::endl;
 }
 
-Cat& Cat::operator=(const Cat& other)
+Dog& Dog::operator=(const Dog& other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
     if (this == &other)
         return *this;
 	for (int i = 0; i < MAX_IDEA; i++)
 		this->brain->set_Idea(i ,other.brain->get_Idea(i));
-	this->type = other.type;
+    this->type = other.type;
     return *this;
 }
 
-Cat::Cat(const Cat& other)
+
+Dog::Dog(const Dog& other)
 {
-    std::cout << "Cat Copy constructor called" << std::endl;
-	type = "Cat";
+    std::cout << "Dog Copy constructor called" << std::endl;
+	type = "Dog";
 	brain = new Brain();
+	for (int i = 0; i < MAX_IDEA; i++)
+		this->brain->set_Idea(i ,other.brain->get_Idea(i));
 	*this = other;
-
 }
 
-void Cat::makeSound() const
+void Dog::makeSound() const
 {
-    std::cout << "Meowww Meoawww" << std::endl;
+    std::cout << "Bark Bark" << std::endl;
 }
 
-Brain* Cat::get_brain(void)
+Brain* Dog::get_brain(void)
 {
 	return brain;
 }
