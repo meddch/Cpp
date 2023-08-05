@@ -6,8 +6,8 @@ BLUE = \033[0;34m
 NAME = 	Animals
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main Animal Dog Cat WrongCat WrongAnimal
-HEADERS =   Dog.hpp Cat.hpp Animal.hpp WrongCat.hpp
+FILE =  main Animal Dog Cat WrongCat WrongAnimal Brain
+HEADERS =   Dog.hpp Cat.hpp Animal.hpp WrongCat.hpp Brain.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))

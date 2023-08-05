@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:33:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 13:44:25 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/04 16:06:11 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal
 {
-	Brain*	_brain;
+	Brain*	brain;
 public :
     Cat();
     ~Cat();

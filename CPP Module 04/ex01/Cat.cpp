@@ -6,22 +6,22 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:33:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 13:44:39 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/05 07:21:09 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 
-Cat::Cat() : Animal("Cat")
+Cat::Cat() : Animal("Cat"), brain(new Brain)
 {
-    std::cout << "Cat constructor called for " <<  std::endl;
-	_brain = new 
+    std::cout << "Cat constructor called" <<  std::endl;
 }
 
 Cat::~Cat()
 {
-    std::cout << "Cat destructor called" <<  std::endl;
+    delete brain;
+	std::cout << "Cat destructor called" <<  std::endl;
 }
 
 Cat& Cat::operator=(const Cat& other)
@@ -29,14 +29,19 @@ Cat& Cat::operator=(const Cat& other)
     std::cout << "Copy assignment operator called" << std::endl;
     if (this == &other)
         return *this;
-    this->type = other.type;
+	for (int i = 0; i < MAX_IDEA; i++)
+		this->brain->set_Idea(i ,other.brain->get_Idea(i));
+	this->type = other.type;
     return *this;
 }
 
 Cat::Cat(const Cat& other)
 {
-    std::cout << "Copy constructor called" << std::endl;
-    *this = other;
+    std::cout << "Cat Copy constructor called" << std::endl;
+	type = "Cat";
+	brain = new Brain();
+	*this = other;
+
 }
 
 void Cat::makeSound() const

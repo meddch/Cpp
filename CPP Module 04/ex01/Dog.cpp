@@ -6,21 +6,22 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:38:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 12:00:01 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/05 07:19:42 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog() : Animal("Dog"), brain(new Brain)
 {
-    std::cout << "Dog constructor called" <<  std::endl;    
+    std::cout << "Dog constructor called" <<  std::endl;
 }
 
 Dog::~Dog()
 {
-    std::cout << "Dog destructor called for " <<  std::endl;
+    delete brain;
+	std::cout << "Dog destructor called " <<  std::endl;
 }
 
 Dog& Dog::operator=(const Dog& other)
@@ -28,14 +29,19 @@ Dog& Dog::operator=(const Dog& other)
     std::cout << "Copy assignment operator called" << std::endl;
     if (this == &other)
         return *this;
+	for (int i = 0; i < MAX_IDEA; i++)
+		this->brain->set_Idea(i ,other.brain->get_Idea(i));
     this->type = other.type;
     return *this;
 }
 
+
 Dog::Dog(const Dog& other)
 {
-    std::cout << "Copy constructor called" << std::endl;
-    *this = other;
+    std::cout << "Dog Copy constructor called" << std::endl;
+	type = "Dog";
+	brain = new Brain();
+	*this = other;
 }
 
 void Dog::makeSound() const
