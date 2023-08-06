@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER
-# define ICHARACTER
+#ifndef ICHARACTER_HPP
+# define ICHARACTER_HPP
 
 #include "AMateria.hpp"
 

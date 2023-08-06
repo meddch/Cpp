@@ -14,6 +14,8 @@
 # define AMATERIA
 
 #include <iostream>
+#include "ICharacter.hpp"
+
 
 class AMateria
 {

@@ -28,9 +28,9 @@ AMateria::~AMateria()
 	std::cout << "AMateria Default destructor called" << std::endl;
 }
 
-AMateria& operator=(const AMateria& other)
+AMateria& AMateria::operator=(const AMateria& other)
 {
-	if (*this == other)
+	if (this == &other)
 		return *this;
 	this->type = other.type;
 }
@@ -40,9 +40,12 @@ AMateria::AMateria(const AMateria &other)
 	*this = other;
 }
 
-std::string& const AMateria::getType() const
+const std::string& AMateria::getType() const
 {
-	return this->type;
+	return type;
 }
 
-
+void AMateria::use(ICharacter& target)
+{
+	std::cout << "AMateria abstractly used on " << target.getName() << std::endl;
+}

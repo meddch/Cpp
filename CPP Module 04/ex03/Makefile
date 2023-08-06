@@ -2,10 +2,11 @@ CC = c++
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;34m
-NAME = 	Animals
+NAME = 	a
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main AMateria
+FILE =  main AMateria Character Cure Ice MateriaSource
+
 HEADERS = AMateria.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
