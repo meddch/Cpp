@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 11:23:52 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/07 06:51:50 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/07 11:23:35 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class AMateria
 		AMateria(std::string const & type);
 		AMateria(const AMateria& other);
 		AMateria& operator=(const AMateria& other);
-		std::string const &getType() const;
+		virtual std::string const &getType() const;
 		virtual AMateria* clone() const = 0;
 		virtual void use(ICharacter& target);
 };
