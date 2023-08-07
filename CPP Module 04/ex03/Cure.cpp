@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 06:24:59 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/07 06:25:00 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/07 10:27:37 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,29 @@
 
 Cure::Cure() : _type("cure")
 {
-	std::cout << this->_type << " constructed\n";
+	std::cout << this->_type << " constructed" << std::endl;
 }
 
 Cure::~Cure()
 {
-	std::cout << this->_type << " destroyed\n";
+	std::cout << this->_type << " destroyed" << std::endl;
 }
 
-Cure::Cure(Cure const & ref) : _type(ref.getType())
+Cure::Cure(Cure const &other) : _type(other.getType())
 {
-	std::cout << this->_type << " constructed from copy\n";
+	std::cout << this->_type << " constructed using copy" << std::endl;
 }
 
-Cure & Cure::operator=(Cure const & ref)
+Cure & Cure::operator=(Cure const &other)
 {
-	std::cout << "Assigned from " << ref.getType() << std::endl;
+	std::cout << "Assigned operator called" << std::endl;
+	if (this == &other)
+		return *this;
+	this->_type = other._type;
 	return (*this);
 }
 
-std::string const & Cure::getType( void ) const
+std::string const &Cure::getType(void) const
 {
 	return (this->_type);
 }
@@ -50,6 +53,5 @@ Cure *Cure::clone() const
 void Cure::use(ICharacter& target)
 {
 	std::string target_name = target.getName();
-
 	std::cout << " heals " << target_name << "\'s wounds" << std::endl;
 }
