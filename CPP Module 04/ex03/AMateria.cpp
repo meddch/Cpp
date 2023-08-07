@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 11:23:55 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/06 12:28:26 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/07 06:54:54 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ AMateria& AMateria::operator=(const AMateria& other)
 	if (this == &other)
 		return *this;
 	this->type = other.type;
+	return *this;
 }
 
 AMateria::AMateria(const AMateria &other)

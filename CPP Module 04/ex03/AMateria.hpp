@@ -6,24 +6,24 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 11:23:52 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/06 12:37:00 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/07 06:51:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA
-# define AMATERIA
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
 #include <iostream>
 #include "ICharacter.hpp"
 
-
+class ICharacter;
 class AMateria
 {
 	protected:
 		std::string type;
 	public:
 		AMateria();
-		~AMateria();
+		virtual ~AMateria();
 		AMateria(std::string const & type);
 		AMateria(const AMateria& other);
 		AMateria& operator=(const AMateria& other);

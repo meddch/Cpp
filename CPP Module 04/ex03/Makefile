@@ -4,8 +4,9 @@ GREEN = \033[0;32m
 BLUE = \033[0;34m
 NAME = 	a
 RM = rm -f
-CPPFLAGS = 
-FILE =  main AMateria Character Cure Ice MateriaSource
+CPPFLAGS =
+FILE =  main AMateria Character Cure Ice \
+		MateriaSource
 
 HEADERS = AMateria.hpp
 

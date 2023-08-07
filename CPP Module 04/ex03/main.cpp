@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/07 06:24:42 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/07 06:24:43 by mechane          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "AMateria.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
@@ -13,7 +26,7 @@ int main()
     src->learnMateria(new Cure());
     ICharacter* me = new Character("me");
     AMateria* tmp;
-    
+
     tmp = src->createMateria("ice");
     me->equip(tmp);
     tmp = src->createMateria("cure");
