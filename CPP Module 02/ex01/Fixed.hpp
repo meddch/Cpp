@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:07 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/30 13:16:11 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/09 09:29:14 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Fixed
 {
 	int	_value;
-	static const int frac_bits = 8;	
+	static const int frac_bits;
 public :
 	Fixed();
 	~Fixed();

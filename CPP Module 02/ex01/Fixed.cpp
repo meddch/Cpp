@@ -6,13 +6,13 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:01 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/30 14:07:39 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/09 09:29:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-#include "Fixed.hpp"
+const int Fixed::frac_bits = 8;
 
 Fixed::Fixed() : _value(0)
 {
@@ -48,7 +48,7 @@ void 	Fixed::setRawBits(int const raw)
 int		Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return this->_value;	
+	return this->_value;
 }
 
 Fixed::Fixed(const int d)
