@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:01 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/09 09:41:17 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/09 16:38:34 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ Fixed::Fixed(const float f)
 
 int Fixed::toInt(void) const
 {
-	return (this->_value >> frac_bits);
+	return ((this->_value >=0 ? 1 : -1) * (abs(this->_value) >> frac_bits));
 }
 
 float Fixed::toFloat(void) const
@@ -129,6 +129,11 @@ Fixed Fixed::operator*(const Fixed& other)
 Fixed Fixed::operator/(const Fixed& other)
 {
 	Fixed	res;
+	if (!other.getRawBits())
+	{
+		std::cerr << "Division by zero is undefined" << std::endl;
+		exit(1);
+	}
 	res.setRawBits((_value << frac_bits)/ other.getRawBits());
 	return res;
 }

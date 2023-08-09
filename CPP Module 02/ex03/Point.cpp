@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 16:02:54 by mechane           #+#    #+#             */
-/*   Updated: 2023/07/31 09:00:38 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/09 16:25:30 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ Point& Point::operator=(Point const &other)
 	return *this;
 }
 
-int	Point::substitute_point_in_line(Point const a, Point const b, Point const x)
+int	Point::substitute_point_in_line(Point const a, Point const b, Point const p)
 {
 	Fixed res;
-	
-	res = (a.getY() - x.getY()) * (a.getX() - b.getX()) - (a.getY() - b.getY()) * (a.getX() - x.getX());
-	if (res == 0)
+
+	res = (a.getY() - p.getY()) * (a.getX() - b.getX()) - (a.getY() - b.getY()) * (a.getX() - p.getX());
+	if (res != 0)
+	return (res < 0 ? 1 : -1);
 		return 0;
-	return (res < 0 ? -1 : 1);
 }

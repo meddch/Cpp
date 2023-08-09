@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:01 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/09 09:29:50 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/09 12:29:22 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ Fixed::Fixed(const int d)
 Fixed::Fixed(const float f)
 {
 	std::cout << "FLOAT Constructor called" << std::endl;
-	_value = roundf((float)f * (1 << frac_bits));
+	_value = roundf(f * (1 << frac_bits));
 }
 
 int Fixed::toInt(void) const
 {
-	return (this->_value >> frac_bits);
+	return ((this->_value >=0 ? 1 : -1) * (abs(this->_value) >> frac_bits));
 }
 
 float Fixed::toFloat(void) const
