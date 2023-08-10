@@ -17,11 +17,17 @@ int main()
 	Fixed a;
 	Fixed b(a);
 	Fixed c;
+	Fixed t;
+
 
 	c = b;
+	t.setRawBits(9);
+	Fixed h(t);
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
+	std::cout << t.getRawBits() << std::endl;
+	std::cout << h.getRawBits() << std::endl;
 
 	return 0;
 }
