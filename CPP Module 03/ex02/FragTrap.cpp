@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 12:13:04 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 08:54:21 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/12 14:41:13 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,15 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
 	this->_Energy_point = other._Energy_point;
 	this->_attack_dmg = other._attack_dmg;
 	return *this;
+}
+
+void FragTrap::attack(const std::string& target)
+{
+	if (!_Energy_point || !_Hit_point)
+		std::cout << "FragTrap " << _name << " can't attack. It has no hit points or energy points left" << std::endl;
+	else
+	{
+		_Energy_point--;
+		std::cout << "FragTrap " << _name << " attacks " << target << " causing " << _attack_dmg << "  points of damage!" << std::endl;
+	}
 }
