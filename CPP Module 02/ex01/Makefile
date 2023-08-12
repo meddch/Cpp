@@ -6,15 +6,15 @@ BLUE = \033[0;34m
 NAME = Fixed
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main Fixed 
+FILE =  main Fixed
 HEADERS =   Fixed.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
 
-%.o : %.cpp 
+%.o : %.cpp $(HEADERS)
 	@echo "$(BLUE)Building project ⏳.."
-	@$(CC) $(CPPFLAGS)  -c -o $@ $< 
+	@$(CC) $(CPPFLAGS)  -c -o $@ $<
 
 all: $(NAME)
 	@echo "$(GREEN)✅ ALL DONE ✅"
@@ -27,9 +27,9 @@ clean:
 	@$(RM) $(OBJS)
 	@echo  "$(RED)OBJS DELETED ☠ "
 
-fclean: clean 
+fclean: clean
 	@$(RM) $(NAME) $(LIBFT)
 	@echo  "$(RED)ALL DELETED ☠ "
 
 
-re: fclean all 
+re: fclean all

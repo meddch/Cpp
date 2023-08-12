@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 10:08:01 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/09 16:38:34 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/12 13:37:44 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ bool Fixed::operator!=(const Fixed& other)
 }
 bool Fixed::operator==(const Fixed& other)
 {
-	return (_value != other.getRawBits());
+	return (_value == other.getRawBits());
 }
 
 //arithmetic operators:
