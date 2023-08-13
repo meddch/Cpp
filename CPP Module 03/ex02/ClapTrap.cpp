@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 09:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 08:46:44 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/13 10:42:49 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ClapTrap::attack(const std::string& target)
 	{
 		_Energy_point--;
 		std::cout << "ClapTrap " << _name << " attacks " << target << " causing " << _attack_dmg << "  points of damage!" << std::endl ;
-	} 
+	}
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -78,7 +78,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (_Hit_point == 10)
+	if (_Hit_point == 100)
         std::cout << "ClapTrap can't be repaired any further. Its hit points are already at the maximum value." << std::endl ;
 	else
 	{
@@ -88,8 +88,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		{
     		_Energy_point--;
 			_Hit_point += amount;
-			if (_Hit_point > 10) 
-    	    	_Hit_point = 10;
+			if (_Hit_point > 100)
+    	    	_Hit_point = 100;
     		std::cout << "ClapTrap is repaired by " << amount << " hit points and has " << _Hit_point << " hit points remaining." << std::endl;
 		}
 	}

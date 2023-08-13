@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 12:13:04 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/12 14:59:28 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/13 10:14:33 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 FragTrap::FragTrap() : ClapTrap()
 {
-    std::cout << "FragTrap Default Constructor called" << std::endl;
+	_attack_dmg = 30;
+    _Hit_point = 100;
+    _Energy_point = 100;
+	std::cout << "FragTrap Default Constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
