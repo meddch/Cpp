@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 06:26:27 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/07 11:11:48 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/14 16:56:32 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 MateriaSource::MateriaSource()
 {
-	std::cout << "Materia source was created" << std::endl;
+	std::cout << "MateriaSource constructed" << std::endl;
 	for(int i = 0; i < 4; i++)
 	{
 		this->_inventory[i] = 0;
@@ -30,11 +30,13 @@ MateriaSource::MateriaSource(MateriaSource const &other)
 		if (other._inventory[i])
 			this->_inventory[i] = (other._inventory[i])->clone();
 	}
-	std::cout << "Materia source was created from copy" << std::endl;
+	std::cout << "MateriaSource constructed from copy" << std::endl;
 }
 
 MateriaSource & MateriaSource::operator=(MateriaSource const &other)
 {
+	if (this == &other)
+		return (*this);
 	for(int i = 0; i < 4; i++)
 	{
 		if (this->_inventory[i])
@@ -52,7 +54,7 @@ MateriaSource::~MateriaSource()
 		if (this->_inventory[i])
 			delete this->_inventory[i];
 	}
-	std::cout << "Materia source was destoryed" << std::endl;
+	std::cout << "MateriaSource  destoryed" << std::endl;
 }
 
 void MateriaSource::learnMateria(AMateria *m)
@@ -63,7 +65,7 @@ void MateriaSource::learnMateria(AMateria *m)
 		i++;
 	if (i >= 4)
 	{
-		std::cout << "Can't learn more than 4 Materia";
+		std::cout << "Can't learn more than 4 Materia" << std::endl;
 		return ;
 	}
 	(this->_inventory)[i] = m;
@@ -78,7 +80,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 		i++;
 	if (i >= 4 || !(this->_inventory)[i])
 	{
-		std::cout << type << " materia does not exit" << std::endl;
+		std::cout << "this materia type : " << type << " does not exit" << std::endl;
 		return (NULL);
 	}
 	std::cout << "Materia " << type << " created" << std::endl;

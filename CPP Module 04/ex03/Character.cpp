@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:28:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/07 11:07:06 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/14 16:57:37 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ Character::~Character()
 	std::cout << "Character named " << this->_name << " was destroyed" << std::endl;
 }
 
-std::string const & Character::getName() const
+std::string const &Character::getName() const
 {
 	return (this->_name);
 }
 
-Character::Character(Character const &other) : _name(other.getName() + "_copy")
+Character::Character(Character const &other) : _name(other.getName())
 {
 	for(int i = 0; i < 4; i++)
 	{
@@ -48,6 +48,9 @@ Character::Character(Character const &other) : _name(other.getName() + "_copy")
 
 Character & Character::operator=(Character const &other)
 {
+	if (this == &other)
+		return (*this);
+
 	for(int i = 0; i < 4; i++)
 	{
 		if (this->_inventory[i])
@@ -71,7 +74,7 @@ void Character::equip(AMateria* m)
 		i++;
 	if (i >= 4)
 	{
-		std::cout << this->_name << " can't equip more than 4 Materia";
+		std::cout << this->_name << " can't equip more than 4 Materia" << std::endl;
 		return ;
 	}
 	(this->_inventory)[i] = m;
@@ -89,19 +92,18 @@ void Character::unequip(int idx)
 		AMateria *ptr = (this->_inventory)[idx];
 		std::cout << this->_name << " unequipped " << ptr->getType() << " at slot "<< idx << std::endl;
 		(this->_inventory)[idx] = 0;
+		delete ptr;
 	}
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	std::string	name = this->getName();
-
 	if (idx < 0 || idx >= 4 || !(this->_inventory)[idx])
 	{
 		std::cout << "Nothing found to use at index " << idx << std::endl;
 		return ;
 	}
-	std::cout << name;
+	std::cout << this->getName() << " :\n   ";
 	((this->_inventory)[idx])->use(target);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 06:24:59 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/07 10:27:37 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/14 16:00:15 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Cure::~Cure()
 
 Cure::Cure(Cure const &other) : _type(other.getType())
 {
-	std::cout << this->_type << " constructed using copy" << std::endl;
+	std::cout << this->_type << " constructed using copy constructor " << std::endl;
 }
 
 Cure & Cure::operator=(Cure const &other)
@@ -46,12 +46,12 @@ std::string const &Cure::getType(void) const
 
 Cure *Cure::clone() const
 {
-	Cure	*ret = new Cure;
+	Cure *ret = new Cure;
 	return (ret);
 }
 
 void Cure::use(ICharacter& target)
 {
 	std::string target_name = target.getName();
-	std::cout << " heals " << target_name << "\'s wounds" << std::endl;
+	std::cout << "* heals " << target_name << "\'s wounds *" << std::endl;
 }

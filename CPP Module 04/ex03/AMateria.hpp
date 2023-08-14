@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 11:23:52 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/07 11:23:35 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/14 12:35:24 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class ICharacter;
 class AMateria
-{
+{ 
 	protected:
 		std::string type;
 	public:
