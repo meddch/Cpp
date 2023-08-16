@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 10:28:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/14 16:57:37 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/16 07:41:28 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ Character & Character::operator=(Character const &other)
 	{
 		if (this->_inventory[i])
 			delete this->_inventory[i];
+		this->_inventory[i] = 0;
 		if (other._inventory[i])
 			this->_inventory[i] = (other._inventory[i])->clone();
 	}
@@ -92,7 +93,6 @@ void Character::unequip(int idx)
 		AMateria *ptr = (this->_inventory)[idx];
 		std::cout << this->_name << " unequipped " << ptr->getType() << " at slot "<< idx << std::endl;
 		(this->_inventory)[idx] = 0;
-		delete ptr;
 	}
 }
 

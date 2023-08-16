@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 07:48:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/16 10:36:15 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/16 13:35:52 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "Form.hpp"
 
+class Form;
 class  Bureaucrat
 {
         const std::string _name;
@@ -30,6 +32,7 @@ public :
 		const std::string&  getName() const ;
 		void decrementGrade();
 		void incrementGrade();
+		void signForm(Form &form) const;
 		class GradeTooHighException : public std::exception
 		{
 		public:

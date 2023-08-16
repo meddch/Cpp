@@ -2,10 +2,10 @@ CC = c++
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;34m
-NAME = 	a
+NAME = 	bur
 RM = rm -f
-CPPFLAGS =
-FILE =  main Bureaucrat 
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+FILE =  main Bureaucrat
 
 HEADERS = Bureaucrat.hpp
 
