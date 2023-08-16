@@ -5,9 +5,9 @@ BLUE = \033[0;34m
 NAME = 	bur
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main Bureaucrat Form
+FILE =  main Bureaucrat AForm
 
-HEADERS = Bureaucrat.hpp Form.hpp
+HEADERS = Bureaucrat.hpp AForm.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))

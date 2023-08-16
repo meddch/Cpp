@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 07:48:44 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/16 14:13:28 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/16 17:59:38 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,20 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 	return "Bureaucrat : Exception Grade too low!";
 }
 
-void	Bureaucrat::signForm(Form &form) const
+void	Bureaucrat::signAForm(AForm &AForm) const
 {
 	try
 	{
-		if (form.getSigned())
+		if (AForm.getSigned())
 			{
-				std::cout << _name << " couldn’t sign " << form.getName() << " because form already is signed\n";
+				std::cout << _name << " couldn’t sign " << AForm.getName() << " because AForm already is signed\n";
 				return;
 			}
-		form.beSigned(*this);
-		std::cout << _name << " signed " << form.getName() << std::endl;
+		AForm.beSigned(*this);
+		std::cout << _name << " signed " << AForm.getName() << std::endl;
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << _name << " couldn’t sign " << form.getName() << " because grade too low\n";
+		std::cout << _name << " couldn’t sign " << AForm.getName() << " because grade too low\n";
 	}
 }
