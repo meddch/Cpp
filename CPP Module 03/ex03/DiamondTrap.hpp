@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 08:12:33 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/04 08:56:09 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/17 15:50:46 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public :
     DiamondTrap(const DiamondTrap& other);
     void    whoAmI();
     void 	attack(const std::string& target);
-        
+
 };
 
 #endif
