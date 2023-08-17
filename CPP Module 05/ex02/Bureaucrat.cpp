@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 07:48:44 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/16 17:59:38 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/17 10:50:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,17 @@ void	Bureaucrat::signAForm(AForm &AForm) const
 	{
 		std::cout << _name << " couldn’t sign " << AForm.getName() << " because grade too low\n";
 	}
+}
+
+void	Bureaucrat::executeForm( AForm &f ) const
+{
+	try
+	{
+		f.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
+
 }

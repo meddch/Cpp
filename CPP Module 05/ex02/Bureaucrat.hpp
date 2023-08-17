@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 07:48:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/16 18:00:28 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/17 10:53:26 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ public :
 		void decrementGrade();
 		void incrementGrade();
 		void signAForm(AForm &AForm) const;
+		void	executeForm( AForm &f ) const;
 		class GradeTooHighException : public std::exception
 		{
 		public:
