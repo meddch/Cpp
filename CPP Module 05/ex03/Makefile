@@ -11,6 +11,7 @@ FILE =  main \
 		ShrubberyCreationForm \
 		PresidentialPardonForm \
 		RobotomyRequestForm \
+		Intern
 
 HEADERS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 

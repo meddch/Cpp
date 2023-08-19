@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 09:54:31 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/19 10:15:56 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/19 10:05:55 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/19 10:13:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "Intern.hpp"
 
-
-int	main(void)
+class Intern
 {
-
-
-	Intern someRandomIntern;
-	AForm* rrf;
-	rrf = someRandomIntern.makeForm("robotomy2 request", "Bender");
-	return (0);
-}
+public:
+	Intern();
+	Intern(Intern &other);
+	Intern &operator=(Intern &other);
+	~Intern();
+	AForm*	makeForm( std::string form, std::string target );
+	AForm*	newShrubbery( std::string target );
+	AForm*	newPresidential( std::string target );
+	AForm*	newRobotomy( std::string target );
+};
