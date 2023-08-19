@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 10:08:55 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/19 10:12:29 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/19 16:07:22 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ AForm*	Intern::makeForm(std::string form, std::string target)
 	AForm* (Intern::*p[3])(std::string) = {&Intern::newShrubbery, &Intern::newRobotomy, &Intern::newPresidential};
 	int i = 0;
 
-	while (i < 4 && s[i].compare(form) != 0)
+	while (i < 3 && s[i].compare(form) != 0)
 		i++;
 	if (i < 3)
 	{
