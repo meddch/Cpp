@@ -2,7 +2,7 @@ CC = c++
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;34m
-NAME =
+NAME = convert
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 FILE =  main ScalarConverter
@@ -12,7 +12,7 @@ HEADERS = ScalarConverter.hpp
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
 
-%.o : %.cpp
+%.o : %.cpp $(HEADERS)
 	@echo "$(BLUE)Building project ⏳.."
 	@$(CC) $(CPPFLAGS)  -c -o $@ $<
 

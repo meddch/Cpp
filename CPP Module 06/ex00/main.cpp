@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/31 14:52:45 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/20 12:02:59 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/20 12:26:40 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/20 15:55:53 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
-
-#include "ClapTrap.hpp"
+#include "ScalarConverter.hpp"
 
 
-class ScavTrap : virtual public ClapTrap
+int main()
 {
-public:
-    ScavTrap(std::string name);
-    ScavTrap();
-    ~ScavTrap();
-    ScavTrap& operator=(const ScavTrap& other);
-    ScavTrap(const ScavTrap& other);
-	void attack(const std::string& target);
-    void guardGate();
-};
-
-#endif
+	  
+	ScalarConverter a;
+}

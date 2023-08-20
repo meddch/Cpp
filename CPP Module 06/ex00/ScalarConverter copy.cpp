@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*   ScalarConverter copy.cpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:40:31 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/19 15:04:46 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/20 13:58:45 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+// #include "ScalarConverter.hpp"
+
+int ScalarConverter::_int = 0;
+char	ScalarConverter::_char = 0;
+float	ScalarConverter::_float = 0;
+double	ScalarConverter::_double = 0;
+bool	ScalarConverter::_valid = 0;
+bool	ScalarConverter::_special = 0;
+bool	ScalarConverter::_onlyDouble = 0;
+bool	ScalarConverter::_noChar = 0;
 
 ScalarConverter::ScalarConverter(){}
 
-ScalarConverter::ScalarConverter(ScalarConverter &c): _s(c._s), _int(c._int), _float(c._float), _double(c._double), _valid(c._valid), _special(c._special), _onlyDouble(c._onlyDouble), _noChar(false)
-{}
-
-ScalarConverter::ScalarConverter( std::string s ): _s(s), _valid(true), _special(false), _onlyDouble(false), _noChar(false)
+ScalarConverter::ScalarConverter(ScalarConverter &other):
 {
+		this->_int = other._int;
+		this->_char = other._char;
+		this->_float = other._float;
+		this->_double = other._double;
+		this->_valid = other._valid;
+		this->_special = other._special;
+		this->_onlyDouble = other._onlyDouble;
+		this->_noChar = other._noChar;
 }
+
+// ScalarConverter::ScalarConverter( std::string s ): _s(s), _valid(true), _special(false), _onlyDouble(false), _noChar(false)
+// {
+// }
 
 ScalarConverter	&ScalarConverter::operator=( ScalarConverter &c )
 {
