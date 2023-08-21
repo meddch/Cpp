@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serialization.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 12:26:40 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/21 14:06:52 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/21 14:22:05 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/21 14:26:43 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
 
+#include <iostream>
 
-int main(int ac , char **av)
+typedef struct Data
 {
-	if (ac != 2)
-		return 1;
-	std::string s = av[1];
-	ScalarConverter::convert(s);
+	int x;
+	int y;
+} Data;
 
-	return 0;
-}
+
+class Serializer
+{
+	Serializer();
+	Serializer(const Serializer &other);
+	Serializer	&operator=(const Serializer &other);
+	~Serializer();
+	public :
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
+};

@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   B.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 12:26:40 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/21 14:06:52 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/21 14:52:36 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/21 14:52:56 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "B.hpp"
 
-
-int main(int ac , char **av)
+B::~B()
 {
-	if (ac != 2)
-		return 1;
-	std::string s = av[1];
-	ScalarConverter::convert(s);
-
-	return 0;
+	std::cout << "Destructor Called for B\n";
 }

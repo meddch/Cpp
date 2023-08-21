@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:40:34 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/20 15:17:49 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/21 14:23:10 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,7 @@
 #include <string>
 #include <limits>
 #include <iomanip>
-
-// class ScalarConverter
-// {
-// 	static int					_int;
-// 	static char				_char;
-// 	static float				_float;
-// 	static double				_double;
-// 	static bool				_valid;
-// 	static bool				_special;
-// 	static bool				_onlyDouble;
-// 	static bool				_noChar;
-// public:
-// 	// ScalarConverter(std::string s);
-// 	ScalarConverter();
-// 	ScalarConverter(ScalarConverter &other);
-// 	ScalarConverter	&operator=(ScalarConverter &other);
-// 	~ScalarConverter();
-
-// 	static bool	isNum(char c);
-// 	static bool	isSpecialCase(void);
-// 	static bool	isFloatOrDouble(int mode);
-// 	static bool	isSpecialCaseFloat(void);
-// 	static bool	isSpecialCaseDouble(void);
-// 	static bool	charDisplayable(void);
-
-// 	static int		toInt( char const *s);
-// 	static float	toFloat(char const *s);
-// 	static double	toDouble(char const *s);
-
-// 	static int		tryInt();
-// 	static int		tryChar();
-// 	static int		tryFloatOrDouble();
-
-// 	static void	convert();
-// };
+#include <sstream>
 
 
 class ScalarConverter
@@ -59,19 +25,27 @@ class ScalarConverter
 	static char				_char;
 	static float			_float;
 	static double			_double;
-	static bool				_valid;
-	static bool				_special;
-	static bool				_onlyDouble;
+	static bool				_noInt;
 	static bool				_noChar;
+	static bool				_noDis;
+	static bool				_valid;
+	static bool				_is_int;
 
-	public :
+		static void ConvertChar(std::string &c);
+		static void ConvertFloat(std::string &c);
+		static void ConvertDouble(std::string &c);
+		static bool	SpecialCase(std::string &c);
+		static double	To_Num(std::string &s);
+		static void	ConvertInt(std::string &s);
+		static bool isStringDigits(const std::string& str);
+
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		ScalarConverter	&operator=(const ScalarConverter &other);
 		~ScalarConverter();
+	public :
 		static void convert(std::string &c);
 
-		static void ConvertChar(std::string &c);
-		static void ConvertFloat(std::string &c);
+
 
 };

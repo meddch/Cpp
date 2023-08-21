@@ -5,20 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 12:26:40 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/21 14:06:52 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/21 14:32:33 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/21 14:41:16 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serialization.hpp"
 
 
-int main(int ac , char **av)
+int main()
 {
-	if (ac != 2)
-		return 1;
-	std::string s = av[1];
-	ScalarConverter::convert(s);
+	Data *data;
+	uintptr_t pt;
 
-	return 0;
+	data = new Data;
+	pt = Serializer::serialize(data);
+
+	std::cout << pt << std::endl;
+	std::cout << Serializer::deserialize(pt) << std::endl;
+	std::cout << std::endl << std::endl;
+	data->x = 0;
+	data->y = 1;
+	std::cout << (uintptr_t)(data) << std::endl;
+	std::cout << (Data *)(pt) << std::endl;
 }

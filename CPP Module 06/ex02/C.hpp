@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 12:26:40 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/21 14:06:52 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/21 14:53:38 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/21 14:55:28 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
+
+#include "Base.hpp"
 
 
-int main(int ac , char **av)
+class C : public Base
 {
-	if (ac != 2)
-		return 1;
-	std::string s = av[1];
-	ScalarConverter::convert(s);
-
-	return 0;
-}
+	public :
+		~C();
+};
