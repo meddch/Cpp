@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:45:05 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/21 16:38:34 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/21 17:45:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ Base *generate(void)
 void identify(Base* p)
 {
 	Base *tmp;
-
 	if ((tmp = dynamic_cast<A*>(p)) != NULL)
 		std::cout << "This Base identify as A type class ." << std::endl;
 	else if ((tmp = dynamic_cast<B*>(p)) != NULL)

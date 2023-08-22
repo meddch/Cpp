@@ -2,12 +2,12 @@ CC = c++
 RED = \033[0;31m
 GREEN = \033[0;32m
 BLUE = \033[0;34m
-NAME = Serialization
+NAME = whatever
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main Serialization
+FILE =  main
 
-HEADERS = Serialization.hpp
+HEADERS = whatever.hpp
 
 SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
@@ -16,7 +16,7 @@ OBJS = $(addsuffix .o, $(FILE))
 	@echo "$(BLUE)Building project ⏳.."
 	@$(CC) $(CPPFLAGS)  -c -o $@ $<
 
-all: $(NAME) 
+all: $(NAME)
 	@echo "$(GREEN)✅ ALL DONE ✅"
 
 $(NAME): $(OBJS)

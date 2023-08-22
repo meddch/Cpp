@@ -16,7 +16,7 @@ OBJS = $(addsuffix .o, $(FILE))
 	@echo "$(BLUE)Building project ⏳.."
 	@$(CC) $(CPPFLAGS)  -c -o $@ $<
 
-all: $(NAME) $(HEADERS)
+all: $(NAME) 
 	@echo "$(GREEN)✅ ALL DONE ✅"
 
 $(NAME): $(OBJS)
