@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 14:52:51 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/22 15:30:36 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/22 15:56:21 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Array.hpp"
 #include "Array.tpp"
 
-#define MAX_VAL 1
+#define MAX_VAL 10
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
@@ -26,11 +26,7 @@ int main(int, char**)
         numbers[i] = value;
         mirror[i] = value;
     }
-    // //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+
 
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -42,7 +38,7 @@ int main(int, char**)
     }
     try
     {
-        numbers[-2] = 0;
+        numbers[2] = 0;
     }
     catch(const std::exception& e)
     {
@@ -50,7 +46,7 @@ int main(int, char**)
     }
     try
     {
-        numbers[MAX_VAL] = 0;
+        numbers[MAX_VAL - 1] = 0;
     }
     catch(const std::exception& e)
     {
