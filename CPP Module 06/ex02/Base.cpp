@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 14:45:05 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/21 17:45:39 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/25 13:27:53 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void identify(Base& p)
 	{
 		i++;
 		identify(p);
+		return;
 	}
 	switch (i)
 	{

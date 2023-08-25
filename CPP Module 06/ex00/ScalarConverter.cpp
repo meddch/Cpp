@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 13:40:31 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/21 14:03:56 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/25 13:51:29 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ bool ScalarConverter::isStringDigits(const std::string& str)
 	for (int i = p; i < (int)str.length() - 1; i++)
 	{
         if (!std::isdigit(static_cast<unsigned char>(str[i])) && str[i] != '.')
-		{
-			printf("%c\n",str[i]);
-            return false;
-		}
+			return false;
     }
 	if ((str[str.length() - 1] == 'f' && isdigit(str[str.length() - 2]) )|| isdigit(str[str.length() - 1]) )
     	return true;
