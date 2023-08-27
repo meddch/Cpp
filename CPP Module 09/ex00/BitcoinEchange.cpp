@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   BitcoinEchange.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 14:46:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/27 10:35:09 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/27 10:33:48 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/27 10:34:10 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "BitcoinEchange.hpp"
 
-#include <iostream>
-#include <iomanip>
-#include <string>
 
-template <class T>
-class Array
+BitcoinEchange::BitcoinEchange()
 {
-		T		*arr;
-		size_t	_size;
-	public:
+}
 
-		Array();
-		Array(size_t const &n);
-		Array( Array const & src );
-		~Array();
-		Array 		&operator=(Array const &other);
-		T			&operator[](size_t const &i);
-};
+BitcoinEchange::BitcoinEchange(const BitcoinEchange &copy)
+{
+	(void) copy;
+}
 
-#include "Array.tpp"
+
+BitcoinEchange::~BitcoinEchange()
+{
+}
+
+
+BitcoinEchange & BitcoinEchange::operator=(const BitcoinEchange &assign)
+{
+	(void) assign;
+	return *this;
+}
+

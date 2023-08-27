@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 14:46:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/27 10:35:09 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/27 10:34:25 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/27 11:48:02 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "BitcoinEchange.hpp"
 
-#include <iostream>
-#include <iomanip>
-#include <string>
 
-template <class T>
-class Array
+int main(int ac , char **av)
 {
-		T		*arr;
-		size_t	_size;
-	public:
+	BitcoinEchange btc;
 
-		Array();
-		Array(size_t const &n);
-		Array( Array const & src );
-		~Array();
-		Array 		&operator=(Array const &other);
-		T			&operator[](size_t const &i);
-};
+	if (ac != 2)
+		return std::cerr << "Error: could not open file." << std::endl, 1;
 
-#include "Array.tpp"
+	std::ifstream	input(av[1]);
+	std::ifstream	db("data.csv");
+
+	if(input.fail() || db.fail())
+		return std::cerr << "Error: could not open file." << std::endl, 1;
+
+	
+}

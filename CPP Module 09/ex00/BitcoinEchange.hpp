@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   BitcoinEchange.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 14:46:36 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/27 10:35:09 by mechane          ###   ########.fr       */
+/*   Created: 2023/08/27 10:33:16 by mechane           #+#    #+#             */
+/*   Updated: 2023/08/27 11:29:20 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <iomanip>
-#include <string>
+# include <iostream>
+# include <fstream>
+# include <string>
+# include <map>
+# include <vector>
 
-template <class T>
-class Array
+class BitcoinEchange
 {
-		T		*arr;
-		size_t	_size;
+	std::map<int, float, std::greater<int> > _info;
 	public:
+		BitcoinEchange();
+		BitcoinEchange(const BitcoinEchange &copy);
+		~BitcoinEchange();
+		BitcoinEchange & operator=(const BitcoinEchange &assign);
 
-		Array();
-		Array(size_t const &n);
-		Array( Array const & src );
-		~Array();
-		Array 		&operator=(Array const &other);
-		T			&operator[](size_t const &i);
 };
-
-#include "Array.tpp"
