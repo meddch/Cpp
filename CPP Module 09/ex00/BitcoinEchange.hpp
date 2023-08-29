@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 10:33:16 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/27 11:29:20 by mechane          ###   ########.fr       */
+/*   Updated: 2023/08/29 10:11:57 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,4 @@ class BitcoinEchange
 		BitcoinEchange & operator=(const BitcoinEchange &assign);
 
 };
+   
