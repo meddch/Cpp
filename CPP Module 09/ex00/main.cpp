@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinEchange.hpp"
+#include "BitcoinExchange.hpp"
 
 
 int main(int ac , char **av)
 {
-	BitcoinEchange btc;
+	BitcoinExchange btc;
 
 	if (ac != 2)
 		return std::cerr << "Error: could not open file." << std::endl, 1;
@@ -26,5 +26,7 @@ int main(int ac , char **av)
 	if(input.fail() || db.fail())
 		return std::cerr << "Error: could not open file." << std::endl, 1;
 
+	if (btc.isvalid(input))
+		return std::cerr << "Error: invalid input file format.\n", 1;
 	
 }

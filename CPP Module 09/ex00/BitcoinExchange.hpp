@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinEchange.hpp                                 :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,13 +18,15 @@
 # include <map>
 # include <vector>
 
-class BitcoinEchange
+class BitcoinExchange
 {
-	std::map<int, float, std::greater<int> > _info;
+	std::map<std::string, double, std::greater<int> > _info;
 	public:
-		BitcoinEchange();
-		BitcoinEchange(const BitcoinEchange &copy);
-		~BitcoinEchange();
-		BitcoinEchange & operator=(const BitcoinEchange &assign);
+		BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange &copy);
+		~BitcoinExchange();
+		BitcoinExchange & operator=(const BitcoinExchange &assign);
+		bool isvalid(std::ifstream &file);
+		void Data_Base(std::ifstream database);
 
 };
