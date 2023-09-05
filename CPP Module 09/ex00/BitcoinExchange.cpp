@@ -6,48 +6,49 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:50:03 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/05 18:50:04 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/05 20:02:50 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() : value(0), exRate(0), date("") {}
+BitcoinExchange::BitcoinExchange() : _value(0), _exRate(0), _date("") {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& src) : value(src.value), exRate(src.exRate), date(src.date) {}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other)
+{
+	*this = other;
+}
 
 BitcoinExchange::~BitcoinExchange() {}
 
-BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs)
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 {
-	if (this != &rhs)
+	if (this != &other)
 	{
-		this->date = rhs.date;
-		this->value = rhs.value;
-		this->exRate = rhs.exRate;
+		this->_date = other._date;
+		this->_value = other._value;
+		this->_exRate = other._exRate;
 	}
 	
 	return *this ;
 }
 
-void	BitcoinExchange::setDate(std::string _date)
+void	BitcoinExchange::setDate(std::string date)
 {
-	date = _date;
+	_date = date;
 }
 
-void	BitcoinExchange::setValue(double _value)
+void	BitcoinExchange::setValue(double value)
 {
-	value = _value;
+	_value = value;
 }
 
-void	BitcoinExchange::setExchangeRate(double _exRate)
+void	BitcoinExchange::setExchangeRate(double exRate)
 {
-	exRate = _exRate;
+	_exRate = exRate;
 }
 
 void	BitcoinExchange::printMultipledResult() const
 {
-	std::cout << date << " => " << value << " = " << value * exRate << std::endl;
+	std::cout << _date << " => " << _value << " = " << _value * _exRate << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:20 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/05 18:54:14 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/05 19:47:12 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class BitcoinExchange
 {
 	private:
 
-		double		value;
-		double		exRate;
-		std::string	date;
+		double		_value;
+		double		_exRate;
+		std::string	_date;
 
 	public:
 

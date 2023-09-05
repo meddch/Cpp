@@ -1,41 +1,35 @@
+CC = c++
+RED = \033[0;31m
+GREEN = \033[0;32m
+BLUE = \033[0;34m
+NAME = btc
+RM = rm -f
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+FILE =  main BitcoinExchange
 
+HEADERS = BitcoinExchange.hpp
 
-NAME	= btc
-SRCS	= main.cpp BitcoinExchange.cpp
-	
-CC         = c++
-FLAGS    = -Wall -Wextra -Werror -std=c++98
-OBJS        = ${SRCS:.cpp=.o}
-               
+SRCS = $(addsuffix .cpp, $(FILE))
+OBJS = $(addsuffix .o, $(FILE))
 
-CLR_RMV		= \033[0m
-RED		    = \033[1;31m
-GREEN		= \033[1;32m
-YELLOW		= \033[1;33m
-BLUE		= \033[1;34m
-CYAN 		= \033[1;36m
-RM		    = rm -f
+%.o : %.cpp $(HEADERS)
+	@echo "$(BLUE)Building project ⏳.."
+	@$(CC) $(CPPFLAGS)  -c -o $@ $<
 
-.cpp.o:
-	${CC} ${FLAGS} -c $< -o ${<:.cpp=.o}
+all: $(NAME)
+	@echo "$(GREEN)✅ ALL DONE ✅"
 
-${NAME}:	${OBJS}
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
-			@echo "$(GREEN)$(NAME) ✔️${CLR_RMV}"
+$(NAME): $(OBJS)
+	@$(CC) $(CPPFLAGS) -o $(NAME) $^
 
-all:		${NAME}
-
-bonus:		all
 
 clean:
-			@ ${RM} $(OBJS)
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
+	@$(RM) $(OBJS)
+	@echo  "$(RED)OBJS DELETED ☠ "
 
-fclean:		clean
-			@ ${RM} ${NAME}
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
+fclean: clean
+	@$(RM) $(NAME) $(LIBFT)
+	@echo  "$(RED)ALL DELETED ☠ "
 
-re:			fclean all
 
-.PHONY:		all clean fclean re
+re: fclean all
