@@ -1,7 +1,6 @@
 
-
-NAME	= btc
-SRCS	= main.cpp BitcoinExchange.cpp
+NAME	= PmergeMe
+SRCS	= main.cpp
 	
 CC         = c++
 FLAGS    = -Wall -Wextra -Werror -std=c++98
