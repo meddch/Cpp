@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:20 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/05 19:47:12 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/06 13:13:32 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # include <iostream>
 # include <string>
+#include <string.h>
 #include <map>
 #include <fstream>
 #include <cstdlib>
@@ -38,6 +39,7 @@ class BitcoinExchange
 		void	setDate(std::string _date);
 		void	setValue(double _value);
 		void	setExchangeRate(double _exRate);
+		bool	dateValidator(char *date);
 
 		void	printMultipledResult() const;
 };

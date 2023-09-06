@@ -6,42 +6,50 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/05 20:49:09 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/06 13:58:33 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 
-static bool isValidDate(std::string date)
+static const char	*dateValide(std::string dat)
 {
-	std::istringstream iss(date);
-	int year;
-	int month;
-	int day;
-	char del1;
-	char del2;
+	char	*ptr;
+	int		month;
+	int		day;
+	int		year;
+	char	*date = (char *)dat.c_str();
 
-	std::tm timeInfoChecker = {};
+	if (!date)
+		return ("Error : Missing value.\n");
+	ptr = strtok(date, "-");
+	year = std::atoi(ptr);
+
+	ptr = strtok(NULL, "-");
+	month = std::atoi(ptr);
+	if (!ptr || month < 1 || month > 12)
+		return ("Error : bad input (month) =>");
+
+	ptr = strtok(NULL, "-");
+	day = std::atoi(ptr);
+	int month_limits[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
-	iss >> year >> del1 >> month >> del2 >> day;
+	if (!ptr || day > month_limits[month - 1] || day < 1)
+		return ("Error : bad input (day) =>");
 	
-	
-	timeInfoChecker.tm_year = year - 1900;
-	timeInfoChecker.tm_mon = month - 1;
-	timeInfoChecker.tm_mday = day;
-	
-	std::mktime(&timeInfoChecker);
-	if ( del1 != '-' || del2 != '-'
-		|| timeInfoChecker.tm_year != year - 1900
-		|| timeInfoChecker.tm_mon != month - 1
-		|| timeInfoChecker.tm_mday != day)
-		{
-			printf("%d %d",day, timeInfoChecker.tm_mday);
-		return false ;
-		}
-	return true ;
+	if (month == 2 && year % 4 == 0)
+	{
+		if (year % 100 == 0 && year % 400 != 0 && day > 28)
+			return ("Error : bad input (day) =>");
+		else if (year % 4 == 0 && day > 29)
+			return ("Error : bad input (day) =>");
+	}
+	if (month == 8 && day > 31)
+		return ("Error : bad input (day) =>");
+	return (NULL);
 }
+
 
 static bool getDataFromCsv(std::ifstream& input, std::map<std::string, double>& btc_map)
 {
@@ -58,9 +66,9 @@ static bool getDataFromCsv(std::ifstream& input, std::map<std::string, double>& 
 		std::istringstream iss(buffer);
 
 		getline(iss, gl_date, ',');
-		if (!isValidDate(gl_date))
-			return std::cout << "ERROR: " << gl_date << " is an invalid date format" << std::endl, true;
-		
+		const char *msg = dateValide(gl_date);
+		if (msg)
+			return std::cout << msg << std::endl , true;
 		getline(iss, gl_exchangeRate, '\0');
 		double exRate = std::strtod(gl_exchangeRate.c_str(), NULL);
 		if (exRate < 0)
@@ -79,6 +87,7 @@ static bool getDataFromInput(std::ifstream& input, std::map<std::string, double>
 	std::getline(input, buffer);
 	if ( buffer != "date | value" )
 	{
+		printf("%s\n",buffer.c_str());
 		std::cout << "ERROR: invalid format: first line must begin with \"date | value\"" << std::endl;
 		return true ;
 	}
@@ -94,7 +103,9 @@ static bool getDataFromInput(std::ifstream& input, std::map<std::string, double>
 
 		iss >> gl_date >> del >> gl_value;
 
-		if ( isValidDate(gl_date) == false )
+		
+		const char *msg = dateValide(gl_date);
+		if (msg)
 		{
 			std::cout << "ERROR: bad input => " << gl_date << std::endl;
 			continue ;
@@ -118,14 +129,15 @@ static bool getDataFromInput(std::ifstream& input, std::map<std::string, double>
 		}
 
 		std::map< std::string, double >::iterator it_lowerDate = btc_map.lower_bound(gl_date);
-
+		
 		if ( (*it_lowerDate).first != gl_date )
 		{
 			if ( it_lowerDate != btc_map.begin() )
 				it_lowerDate--;
 		}
-		btc.setValue(value);
+		
 		btc.setDate(gl_date);
+		btc.setValue(value);
 		btc.setExchangeRate((*it_lowerDate).second);
 
 		btc.printMultipledResult();
@@ -156,7 +168,7 @@ int main (int ac, char **av)
 
 	std::ifstream data_Base;
 
-	data_Base.open("./data.csv");
+	data_Base.open("data.csv");
 	
 	if (data_Base.fail())
 	{
