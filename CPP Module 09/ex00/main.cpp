@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/06 13:58:33 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/08 16:41:38 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,122 +29,108 @@ static const char	*dateValide(std::string dat)
 	ptr = strtok(NULL, "-");
 	month = std::atoi(ptr);
 	if (!ptr || month < 1 || month > 12)
-		return ("Error : bad input (month) =>");
+		return ("Error : invalid month => ");
 
 	ptr = strtok(NULL, "-");
 	day = std::atoi(ptr);
-	int month_limits[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int month_limits[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
 	if (!ptr || day > month_limits[month - 1] || day < 1)
-		return ("Error : bad input (day) =>");
+		return ("Error : bad input (day) => ");
 	
-	if (month == 2 && year % 4 == 0)
-	{
-		if (year % 100 == 0 && year % 400 != 0 && day > 28)
-			return ("Error : bad input (day) =>");
-		else if (year % 4 == 0 && day > 29)
-			return ("Error : bad input (day) =>");
-	}
-	if (month == 8 && day > 31)
-		return ("Error : bad input (day) =>");
+	if (month == 2 && day > 28 && (((year % 4 == 0) && (year % 100 != 0)) || year % 400 == 0))
+		return ("Error : bad day => ");
+
 	return (NULL);
 }
 
 
-static bool getDataFromCsv(std::ifstream& input, std::map<std::string, double>& btc_map)
+static bool getCsv(std::ifstream& csv, std::map<std::string, double>& btc_map)
 {
 	std::string buffer;
 
-	std::getline(input, buffer);
-	if (buffer != "date,exchange_rate" )
-		return std::cout << "ERROR: invalid format: first line must begin with \"date,exchange_rate\"" << std::endl, true;
+	std::getline(csv, buffer);
+	
+	if (buffer != "date,exchange_rate")
+		return std::cout << "ERROR: first line must begin with \"date,exchange_rate\"" << std::endl, true;
 
-	while (std::getline(input, buffer))
+	while (std::getline(csv, buffer))
 	{
-		std::string gl_date;
-		std::string gl_exchangeRate;
+		std::string date;
+		std::string exchangeRate;
 		std::istringstream iss(buffer);
 
-		getline(iss, gl_date, ',');
-		const char *msg = dateValide(gl_date);
+		getline(iss, date, ',');
+		const char *msg = dateValide(date);
 		if (msg)
-			return std::cout << msg << std::endl , true;
-		getline(iss, gl_exchangeRate, '\0');
-		double exRate = std::strtod(gl_exchangeRate.c_str(), NULL);
+			return std::cout << msg << date << std::endl , true;
+		getline(iss, exchangeRate, '\0');
+		double exRate = std::strtod(exchangeRate.c_str(), NULL);
 		if (exRate < 0)
-			return std::cout << "ERROR: " << gl_exchangeRate << " is an invalid exchange rate format" << std::endl, true;
+			return std::cout << "ERROR: " << exchangeRate << " is an invalid exchange rate format" << std::endl, true;
 		
-		btc_map.insert(std::make_pair(gl_date, exRate));
+		btc_map.insert(std::make_pair(date, exRate));
 	}
 	
 	return false;
 }
 
-static bool getDataFromInput(std::ifstream& input, std::map<std::string, double>& btc_map)
+static bool getInput(std::ifstream& input, std::map<std::string, double>& btc_map)
 {
 	std::string buffer;
 
 	std::getline(input, buffer);
-	if ( buffer != "date | value" )
-	{
-		printf("%s\n",buffer.c_str());
-		std::cout << "ERROR: invalid format: first line must begin with \"date | value\"" << std::endl;
-		return true ;
-	}
+	if (buffer != "date | value")
+		return std::cout << "ERROR: first line must begin with \"date | value\"" << std::endl, true ;
 
 	
 	BitcoinExchange	btc;
-	while ( std::getline(input, buffer) )
+	while (std::getline(input, buffer))
 	{
-		std::string gl_date;
-		std::string gl_value;
+		std::string date;
+		std::string value;
 		std::string del;
 		std::istringstream iss(buffer);
 
-		iss >> gl_date >> del >> gl_value;
+		iss >> date >> del >> value;
 
 		
-		const char *msg = dateValide(gl_date);
+		const char *msg = dateValide(date);
 		if (msg)
 		{
-			std::cout << "ERROR: bad input => " << gl_date << std::endl;
+			std::cout << "ERROR: bad date => " << date << std::endl;
 			continue ;
 		}
 		
-		double value = std::strtod(gl_value.c_str(), NULL);
-		if ( value <= 0 )
+		double v_value = std::strtod(value.c_str(), NULL);
+		
+		if (v_value <= 0 || v_value >= 1000)
 		{
-			std::cout << "ERROR: not a positive number." << std::endl;
-			continue ;
-		}
-		if ( 1000 <= value )
-		{
-			std::cout << "ERROR: too large a number." << std::endl;
-			continue ;
-		}
-		if (del != "|")
-		{
-			std::cout << "It's not a correct delimeter." << std::endl;
+			std::cout << "ERROR: bad value : " << v_value << std::endl;
 			continue ;
 		}
 
-		std::map< std::string, double >::iterator it_lowerDate = btc_map.lower_bound(gl_date);
-		
-		if ( (*it_lowerDate).first != gl_date )
+		if (del != "|")
 		{
-			if ( it_lowerDate != btc_map.begin() )
+			std::cout << "ERROR: bad delimeter :" << del << std::endl;
+			continue ;
+		}
+
+		std::map< std::string, double >::iterator it_lowerDate = btc_map.lower_bound(date);
+		
+		if ( (*it_lowerDate).first != date )
+		{
+			if (it_lowerDate != btc_map.begin())
 				it_lowerDate--;
 		}
 		
-		btc.setDate(gl_date);
-		btc.setValue(value);
+		btc.setDate(date);
+		btc.setValue(v_value);
 		btc.setExchangeRate((*it_lowerDate).second);
 
-		btc.printMultipledResult();
+		btc.print();
 	}
-	
-
-	return false ;
+		return false ;
 }
 
 static bool clean(std::ifstream& inputFile, std::ifstream& data_Base, bool exitStatus)
@@ -180,10 +166,10 @@ int main (int ac, char **av)
 
 	std::map< std::string, double >	btc_map;
 
-	if (getDataFromCsv(data_Base, btc_map))
+	if (getCsv(data_Base, btc_map))
 		return clean(inputFile, data_Base, EXIT_FAILURE) ;
 
-	if (getDataFromInput(inputFile, btc_map))
+	if (getInput(inputFile, btc_map))
 		return clean(inputFile, data_Base, EXIT_FAILURE) ;
 
 	return clean(inputFile, data_Base, EXIT_SUCCESS) ;

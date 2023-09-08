@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:50:03 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/05 20:02:50 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/08 16:41:48 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	BitcoinExchange::setExchangeRate(double exRate)
 	_exRate = exRate;
 }
 
-void	BitcoinExchange::printMultipledResult() const
+void	BitcoinExchange::print() const
 {
 	std::cout << _date << " => " << _value << " = " << _value * _exRate << std::endl;
 }
