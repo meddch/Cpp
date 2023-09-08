@@ -21,38 +21,26 @@ void  mergeSort(container &c, int leftPart, int middle, int rightPart)
 	container c_right(size_rightPart);
 	
 	for ( int i = 0; i < size_leftPart ; i++ )
-	{
 		c_left[i] = c[leftPart + i];
-	}
 
 	for ( int i = 0 ; i < size_rightPart ; i++ )
-	{
 		c_right[i] = c[middle + 1 + i];
-	}
 
 	int i = 0;
 	int j = 0;
 	int k = leftPart;
 
-	while ( i < size_leftPart && j < size_rightPart )
+	while (i < size_leftPart && j < size_rightPart)
 	{
-		if ( c_left[i] <= c_right[j] )
-		{
+		if (c_left[i] <= c_right[j])
 			c[k++] = c_left[i++];
-		}
 		else
-		{
 			c[k++] = c_right[j++];
-		}
 	}			
-	while ( i < size_leftPart )
-	{
+	while (i < size_leftPart)
 		c[k++] = c_left[i++];
-	}
-	while ( i < size_rightPart )
-	{
+	while (i < size_rightPart)
 		c[k++] = c_right[j++];
-	}
 }
 
 template <class container>
@@ -61,13 +49,13 @@ void	insertSort(container &c)
 	typename container::iterator it;
 	typename container::iterator it_tmp;
 
-	for ( it = c.begin() + 1 ; it != c.end() ; it++ )
+	for (it = c.begin() + 1 ; it != c.end() ; it++)
 	{
-		if ( *it < *(it - 1) )
+		if (*it < *(it - 1))
 		{
 			int tmp = *it;
 			it_tmp = it;
-			while ( it_tmp != c.begin() && tmp < *(it_tmp - 1) )
+			while (it_tmp != c.begin() && tmp < *(it_tmp - 1))
 			{
 				*it_tmp = *(it_tmp - 1);
 				it_tmp--;
@@ -92,10 +80,8 @@ std::clock_t insertMergeSort(container& c, int leftPart, int rightPart)
 		mergeSort(c, leftPart, middle, rightPart);
 	}
 	else
-	{
 		insertSort(c);
-	}
 
-	return clock() - timeAtStart ;
+	return clock() - timeAtStart;
 }
 

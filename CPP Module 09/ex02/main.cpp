@@ -6,37 +6,33 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:54:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/05 18:58:38 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/08 20:09:22 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-static bool isValidArg( char **arg )
+static bool isValidArg(char **arg)
 {
-	for ( size_t i(1) ; arg[i] ; i++ )
+	for (int i = 1 ; arg[i] ; i++ )
 	{
 		long overflowChecker(strtol(arg[i], NULL, 10));
 
-		if ( overflowChecker < 0 || INT_MAX < overflowChecker )
+		if (overflowChecker < 0 || INT_MAX < overflowChecker)
 			return false ;
 
-		for ( size_t j(0) ; arg[i][j] != '\0' ; j++ )
-		{
+		for (int j = 0 ; arg[i][j] ; j++)
 			if ( !isdigit(arg[i][j]) )
 				return false ;
-		}
 	}
 	
 	return true ;
 }
 
-static void printValue(std::vector<int>& c)
+static void printVec(std::vector<int>& vec)
 {
-	for ( std::vector<int>::iterator it(c.begin()) ; it != c.end() ; it++ )
-	{
+	for (std::vector<int>::iterator it(vec.begin()) ; it != vec.end() ; it++)
 		std::cout << " " << *it;
-	}
 	std::cout << std::endl;
 }
 
@@ -51,39 +47,33 @@ static void printSortTime(std::clock_t t_vector, std::clock_t t_deque, int nbOfE
 
 int main(int ac, char **av)
 {
-	if ( ac < 2 || isValidArg(av) == false )
-	{
-		std::cout << "Error: bad arguments" << std::endl;
-		return EXIT_FAILURE ;
-	}
+	if (ac < 2 || !isValidArg(av))
+		return std::cout << "Error: bad input" << std::endl, EXIT_FAILURE;
 	
-	std::vector<int> c_vector;
-	std::deque<int> c_deque;
-	std::set<int> c_duplicateChecker;
+	std::vector<int> vector;
+	std::deque<int> deque;
+	std::set<int> dupChecker;
 
-	for (size_t i(1) ; av[i] ; i++ )
+	for (int i = 1 ; av[i] ; i++)
 	{
 		int nb = atoi(av[i]);
-		if ( c_duplicateChecker.find(nb) != c_duplicateChecker.end() )
-		{
-			std::cout << "Error: the number must not be duplicate" << std::endl;
-			return EXIT_FAILURE ;
-		}
-		c_duplicateChecker.insert(nb);
-		c_vector.push_back(nb);
-		c_deque.push_back(nb);
+		if (dupChecker.find(nb) != dupChecker.end())
+			return std::cout << "Error: Duplicate" << std::endl,  EXIT_FAILURE;
+		dupChecker.insert(nb);
+		vector.push_back(nb);
+		deque.push_back(nb);
 	}
 
 	std::cout << "Before: ";
-	printValue(c_vector);
+	printVec(vector);
 	
 	std::clock_t t_vector, t_deque;
 
-	t_vector = insertMergeSort(c_vector, 0, c_vector.size() - 1);
-	t_deque = insertMergeSort(c_deque, 0, c_deque.size() - 1);
+	t_vector = insertMergeSort(vector, 0, vector.size() - 1);
+	t_deque = insertMergeSort(deque, 0, deque.size() - 1);
 
 	std::cout << "after: ";
-	printValue(c_vector);
+	printVec(vector);
 
 	printSortTime(t_vector, t_deque, ac - 1);
 
