@@ -37,10 +37,6 @@ void  mergeSort(container &c, int leftPart, int middle, int rightPart)
 		else
 			c[k++] = c_right[j++];
 	}			
-	while (i < size_leftPart)
-		c[k++] = c_left[i++];
-	while (i < size_rightPart)
-		c[k++] = c_right[j++];
 }
 
 template <class container>

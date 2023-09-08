@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:54:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/08 20:09:22 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/08 21:47:55 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void printVec(std::vector<int>& vec)
 	std::cout << std::endl;
 }
 
-static void printSortTime(std::clock_t t_vector, std::clock_t t_deque, int nbOfElements)
+static void printTime(std::clock_t t_vector, std::clock_t t_deque, int nbOfElements)
 {
 	double timevector = static_cast<double>(t_vector) / CLOCKS_PER_SEC;
 	std::cout << "Time to process a range of " << nbOfElements << " elements with std::vector : " << std::fixed << timevector  << " us" << std::endl;
@@ -75,7 +75,7 @@ int main(int ac, char **av)
 	std::cout << "after: ";
 	printVec(vector);
 
-	printSortTime(t_vector, t_deque, ac - 1);
+	printTime(t_vector, t_deque, ac - 1);
 
 	return EXIT_SUCCESS ;
 }
