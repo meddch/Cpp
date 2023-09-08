@@ -6,99 +6,117 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:53:29 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/05 18:53:31 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/08 18:46:15 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "RPN.hpp"
 
-RPN::RPN() {}
 
-RPN::RPN(const RPN& src) : container(src.container) , result(src.result) {}
+RPN::RPN(int typ, int val)
+{
+	type = typ;
+	value = val;
+}
+
+RPN::RPN(char token)
+{
+    switch (token)
+	{
+        case '*':
+            *this = RPN(MULT);
+			break;
+        case '/':
+            *this = RPN(DIV);
+			break;
+        case '+':
+            *this = RPN(PLUS);
+			break;
+        case '-':
+            *this = RPN(MINUS);
+			break;
+        default:
+            isdigit(token) ? *this = RPN(NBR, token - '0') : *this = RPN(NONE);
+    }
+}
+
+RPN::RPN(const RPN &other)
+{
+	*this = other;
+}
+
 
 RPN::~RPN() {}
 
-RPN&	RPN::operator=(const RPN& rhs)
+RPN & RPN::operator=(const RPN &other)
 {
-	if ( this != &rhs )
-	{
-		container = rhs.container;
-		result = rhs.result;
-	}
-
-	return *this ;
+	if (this == &other)
+		return (*this);
+		
+	value = other.value;
+	type = other.type;
+	
+	return (*this);
 }
 
-bool RPN::calculate(std::string av)
+int RPN::Res(int left, int right, char opera)
 {
-	for ( std::string::iterator it = av.begin() ; it != av.end() ; it++ )
+	switch (opera)
 	{
-		if ( *it == ' ')
+		case PLUS:
+			return (left + right);
+		case MINUS:
+			return (left - right);
+		case MULT:
+			return (left * right);
+		case DIV:
 		{
-			continue ;
-		}
-		else if ( '0' <= *it && *it <= '9' )
-		{
-			char	str[2];
-
-			str[1] = '\0';
-			str[0] = *it;
-			container.push( std::atoi(str) );
-		}
-		else
-		{
-			if ( container.size() < 2 )
-			{
-				std::cout << "Invalid expression" << std::endl;
-				return false ;
-			}
-			
-			int nbr1;
-			int nbr2;
-
-			nbr2 = container.top();
-			container.pop();
-			nbr1 = container.top();
-			container.pop();
-			
-			if ( *it == '+' )
-			{
-				container.push(nbr1 + nbr2);
-			}
-			else if ( *it == '-' )
-			{
-				container.push(nbr1 - nbr2);
-			}
-			else if ( *it == '*' )
-			{
-				container.push(nbr1 * nbr2);
-			}
-			else if ( *it == '/' )
-			{
-				if ( nbr2 == 0 )
-				{
-					std::cout << "you can't divide by zero." << std::endl;
-					return false ;
-				}
-				container.push(nbr1 / nbr2);
-			}
+			if (!right)
+				throw std::runtime_error("Floating Point Exception Dividing on Zero\n");
+			return (left / right);
 		}
 	}
-
-	result = container.top();
-	container.pop();
-
-	if ( container.size() != 0)
-	{
-		std::cout << "Invalid expression" << std::endl;
-		return false ;
-	}
-	return true ;
+	return (0);
 }
 
-int RPN::getResult() const
+int RPN::Calcul(char *input)
 {
-	return result ;
+    std::stack<int> stack;
+    std::stringstream expr(input);
+
+    char token;
+	int left;
+	int right;
+	
+    while (expr >> token)
+	{
+
+        RPN tok(token);
+
+        if (tok.type == NONE)
+            throw std::runtime_error("ERROR: bad input\n");
+
+        if (tok.type == NBR)
+            stack.push(tok.value);
+        
+        else
+		{
+
+            if (stack.size() < 2)
+            	throw std::runtime_error("ERROR: bad input\n");
+                
+            right = stack.top();
+			stack.pop();
+            left = stack.top();
+			stack.pop();
+
+				
+            stack.push(RPN::Res(left,right,tok.type));
+        }
+    }
+
+
+    return (stack.size() == 1 ? stack.top() :  throw std::runtime_error("ERROR: bad input\n"));
+
 }
+
