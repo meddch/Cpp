@@ -105,13 +105,13 @@ void merge(std::deque <std::size_t> &dq, std::deque <std::size_t> &left, std::de
 }
 
 
-std::clock_t    deque_sorted(std::deque <std::size_t> &dq, size_t k)
+std::clock_t    insertionSortDeque(std::deque <std::size_t> &dq, size_t k)
 {
     std::clock_t timeAtStart = clock();
     
     if (k < 1)
     {
-        deque_sorted(dq, 2);
+        insertionSortDeque(dq, 2);
         return clock() - timeAtStart;
     }
     if (dq.size() < k)
@@ -123,8 +123,8 @@ std::clock_t    deque_sorted(std::deque <std::size_t> &dq, size_t k)
     std::deque <std::size_t> left(dq.begin(), dq.begin() + size/2);
     std::deque <std::size_t> right(dq.begin() + size/2 , dq.end());
     dq.clear();
-    deque_sorted(left, k);
-    deque_sorted(right, k);
+    insertionSortDeque(left, k);
+    insertionSortDeque(right, k);
     merge(dq,left,right);
 
     return clock() - timeAtStart;

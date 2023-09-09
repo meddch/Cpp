@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:54:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/09 18:39:55 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/09 18:57:56 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int main(int ac, char **av)
 	std::clock_t t_vector, t_deque;
 
 	t_vector = mergeInsertionSortVector(vector);
-	t_deque = deque_sorted(deque, deque.size());
+	t_deque = insertionSortDeque(deque, deque.size());
 
 	std::cout << "after: ";
 	printVec(vector);
