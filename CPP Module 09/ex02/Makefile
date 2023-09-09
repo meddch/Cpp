@@ -5,7 +5,7 @@ BLUE = \033[0;34m
 NAME = PmergeMe
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-FILE =  main 
+FILE =  main PmergeMe
 
 HEADERS = PmergeMe.hpp
 
