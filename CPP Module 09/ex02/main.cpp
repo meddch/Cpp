@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:54:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/09 18:57:56 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/10 22:08:38 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static bool isValidArg(char **arg)
 {
 	for (int i = 1 ; arg[i] ; i++ )
 	{
-		long overflowChecker(strtol(arg[i], NULL, 10));
+		long long nbr(strtol(arg[i], NULL, 10));
 
-		if (overflowChecker < 0 || INT_MAX < overflowChecker)
+		if (nbr < 0 || INT_MAX < nbr)
 			return false ;
 
 		for (int j = 0 ; arg[i][j] ; j++)
@@ -32,7 +32,7 @@ static bool isValidArg(char **arg)
 static void printVec(std::vector<std::size_t>& vec)
 {
 	for (std::vector<std::size_t>::iterator it(vec.begin()) ; it != vec.end() ; it++)
-		std::cout << " " << *it;
+		std::cout << std::setw(11) << *it;
 	std::cout << std::endl;
 }
 
@@ -69,7 +69,7 @@ int main(int ac, char **av)
 	if(hasDuplicate(vector))
 		return std::cout << "Error: Duplicate" << std::endl,  EXIT_FAILURE;
 	
-	std::cout << "Before: ";
+	std::cout << "Before :";
 	printVec(vector);
 	
 	std::clock_t t_vector, t_deque;
@@ -77,10 +77,11 @@ int main(int ac, char **av)
 	t_vector = mergeInsertionSortVector(vector);
 	t_deque = insertionSortDeque(deque, deque.size());
 
-	std::cout << "after: ";
+	std::cout << "After  :";
 	printVec(vector);
 
 	printTime(t_vector, t_deque, ac - 1);
+
 
 
 	return EXIT_SUCCESS ;
