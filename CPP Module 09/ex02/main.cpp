@@ -22,7 +22,7 @@ static bool isValidArg(char **arg)
 			return false ;
 
 		for (int j = 0 ; arg[i][j] ; j++)
-			if ( !isdigit(arg[i][j]) )
+			if (!isdigit(arg[i][j]))
 				return false ;
 	}
 	
