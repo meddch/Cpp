@@ -13,7 +13,7 @@ SRCS = $(addsuffix .cpp, $(FILE))
 OBJS = $(addsuffix .o, $(FILE))
 
 %.o : %.cpp $(HEADERS)
-	@echo "$(BLUE)Building project ⏳.."
+	@echo "$(BLUE)Building project ⏳..."
 	@$(CC) $(CPPFLAGS)  -c -o $@ $<
 
 all: $(NAME)
