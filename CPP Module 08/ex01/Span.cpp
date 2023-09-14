@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:37:11 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/24 14:18:04 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/14 13:39:51 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int Span::shortestSpan()
 int Span::longestSpan()
 {
 	if (_vector.empty())
-		throw std::runtime_error("Vector is empty !");
+		throw std::runtime_error("Span is empty !");
 	if (_vector.size() == 1)
-		throw std::runtime_error("Vector has only one number .");
+		throw std::runtime_error("Span has only one number .");
 	std::vector<int> sortedNumbers(_vector);
 	std::sort(sortedNumbers.begin(), sortedNumbers.end());
 
@@ -92,7 +92,7 @@ void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterat
 {
 	if ((unsigned int)(_vector.size() + end - begin) > _size)
 	{
-		throw std::runtime_error("Vector already full !");
+		throw std::runtime_error("Span already full !");
 
 	}
 	while (begin != end)
