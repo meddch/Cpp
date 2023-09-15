@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:50:03 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/08 16:41:48 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:50:52 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 		this->_value = other._value;
 		this->_exRate = other._exRate;
 	}
-	
-	return *this ;
+
+	return *this;
 }
 
 void	BitcoinExchange::setDate(std::string date)

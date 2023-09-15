@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/08 16:41:38 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/15 10:54:01 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static const char	*dateValide(std::string dat)
 	ptr = strtok(NULL, "-");
 	day = std::atoi(ptr);
 	int month_limits[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-	
+
 	if (!ptr || day > month_limits[month - 1] || day < 1)
 		return ("Error : bad input (day) => ");
-	
+
 	if (month == 2 && day > 28 && (((year % 4 == 0) && (year % 100 != 0)) || year % 400 == 0))
 		return ("Error : bad day => ");
 
@@ -50,7 +50,7 @@ static bool getCsv(std::ifstream& csv, std::map<std::string, double>& btc_map)
 	std::string buffer;
 
 	std::getline(csv, buffer);
-	
+
 	if (buffer != "date,exchange_rate")
 		return std::cout << "ERROR: first line must begin with \"date,exchange_rate\"" << std::endl, true;
 
@@ -68,10 +68,10 @@ static bool getCsv(std::ifstream& csv, std::map<std::string, double>& btc_map)
 		double exRate = std::strtod(exchangeRate.c_str(), NULL);
 		if (exRate < 0)
 			return std::cout << "ERROR: " << exchangeRate << " is an invalid exchange rate format" << std::endl, true;
-		
+
 		btc_map.insert(std::make_pair(date, exRate));
 	}
-	
+
 	return false;
 }
 
@@ -83,7 +83,7 @@ static bool getInput(std::ifstream& input, std::map<std::string, double>& btc_ma
 	if (buffer != "date | value")
 		return std::cout << "ERROR: first line must begin with \"date | value\"" << std::endl, true ;
 
-	
+
 	BitcoinExchange	btc;
 	while (std::getline(input, buffer))
 	{
@@ -94,36 +94,36 @@ static bool getInput(std::ifstream& input, std::map<std::string, double>& btc_ma
 
 		iss >> date >> del >> value;
 
-		
+
 		const char *msg = dateValide(date);
 		if (msg)
 		{
 			std::cout << "ERROR: bad date => " << date << std::endl;
-			continue ;
+			continue;
 		}
-		
+
 		double v_value = std::strtod(value.c_str(), NULL);
-		
+
 		if (v_value <= 0 || v_value >= 1000)
 		{
 			std::cout << "ERROR: bad value : " << v_value << std::endl;
-			continue ;
+			continue;
 		}
 
 		if (del != "|")
 		{
 			std::cout << "ERROR: bad delimeter :" << del << std::endl;
-			continue ;
+			continue;
 		}
 
 		std::map< std::string, double >::iterator it_lowerDate = btc_map.lower_bound(date);
-		
+
 		if ( (*it_lowerDate).first != date )
 		{
 			if (it_lowerDate != btc_map.begin())
 				it_lowerDate--;
 		}
-		
+
 		btc.setDate(date);
 		btc.setValue(v_value);
 		btc.setExchangeRate((*it_lowerDate).second);
@@ -148,14 +148,14 @@ int main (int ac, char **av)
 	std::ifstream inputFile;
 
 	inputFile.open(av[1]);
-	
+
 	if (inputFile.fail())
 		return std::cout << "ERROR: could not open file." << std::endl, EXIT_FAILURE;
 
 	std::ifstream data_Base;
 
 	data_Base.open("data.csv");
-	
+
 	if (data_Base.fail())
 	{
 		std::cout << "ERROR: could not open the data base file." << std::endl;
