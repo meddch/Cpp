@@ -6,42 +6,46 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/15 10:54:01 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/17 13:58:53 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 
-static const char	*dateValide(std::string dat)
+static const char	*dateValide(std::string date)
 {
-	char	*ptr;
-	int		month;
-	int		day;
-	int		year;
-	char	*date = (char *)dat.c_str();
 
-	if (!date)
-		return ("Error : Missing value.\n");
-	ptr = strtok(date, "-");
-	year = std::atoi(ptr);
 
-	ptr = strtok(NULL, "-");
-	month = std::atoi(ptr);
-	if (!ptr || month < 1 || month > 12)
-		return ("Error : invalid month => ");
+    if (date.size() != 10)
+        return ("Error : Missing value.\n");
 
-	ptr = strtok(NULL, "-");
-	day = std::atoi(ptr);
+    for (int i = 0; i < 10; i++) {
+        if (i != 4 && i != 7) {
+            if (!isdigit(date[i]))
+                return ("Error : Bad date.\n");
+        } else if (date[i] != '-') {
+            return ("Error : Bad date.\n");
+        }
+    }
+
+    int yr, mth, day;
+    yr = std::stoi(date.substr(0, 4));
+    mth = std::stoi(date.substr(5, 2));
+    day = std::stoi(date.substr(8, 2));
+
+
+    if (yr < 2009|| yr > 2023 || mth < 1 || mth > 12 || day < 1 || day > 31)
+        return ("Error : Bad date.\n");
+	if (mth == 2 && day > 28 && !(((yr % 4 == 0) && (yr % 100 != 0)) || yr % 400 == 0))
+		return ("Error : Bad date.\n");
+
 	int month_limits[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-	if (!ptr || day > month_limits[month - 1] || day < 1)
+	if (day > month_limits[mth - 1])
 		return ("Error : bad input (day) => ");
 
-	if (month == 2 && day > 28 && (((year % 4 == 0) && (year % 100 != 0)) || year % 400 == 0))
-		return ("Error : bad day => ");
-
-	return (NULL);
+    return NULL;
 }
 
 
@@ -104,7 +108,7 @@ static bool getInput(std::ifstream& input, std::map<std::string, double>& btc_ma
 
 		double v_value = std::strtod(value.c_str(), NULL);
 
-		if (v_value <= 0 || v_value >= 1000)
+		if (v_value < 0 || v_value > 1000)
 		{
 			std::cout << "ERROR: bad value : " << v_value << std::endl;
 			continue;
@@ -143,7 +147,7 @@ static bool clean(std::ifstream& inputFile, std::ifstream& data_Base, bool exitS
 int main (int ac, char **av)
 {
 	if (ac != 2)
-		return std::cout << "ERROR: could not open file." << std::endl, EXIT_FAILURE;
+		return std::cout << "ERROR: bad argument." << std::endl, EXIT_FAILURE;
 
 	std::ifstream inputFile;
 
