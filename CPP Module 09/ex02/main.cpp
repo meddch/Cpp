@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:54:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/10 22:08:38 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/17 11:56:26 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static bool isValidArg(char **arg)
 			if (!isdigit(arg[i][j]))
 				return false ;
 	}
-	
+
 	return true ;
 }
 
@@ -55,7 +55,7 @@ int main(int ac, char **av)
 {
 	if (ac < 2 || !isValidArg(av))
 		return std::cout << "Error: bad input" << std::endl, EXIT_FAILURE;
-	
+
 	std::vector<std::size_t> vector;
 	std::deque<std::size_t> deque;
 
@@ -65,17 +65,17 @@ int main(int ac, char **av)
 		vector.push_back(nb);
 		deque.push_back(nb);
 	}
-	
+
 	if(hasDuplicate(vector))
 		return std::cout << "Error: Duplicate" << std::endl,  EXIT_FAILURE;
-	
+
 	std::cout << "Before :";
 	printVec(vector);
-	
+
 	std::clock_t t_vector, t_deque;
 
-	t_vector = mergeInsertionSortVector(vector);
-	t_deque = insertionSortDeque(deque, deque.size());
+	t_vector = mergeInsertionSortVector(vector, 80);
+	t_deque = insertionSortDeque(deque, 80);
 
 	std::cout << "After  :";
 	printVec(vector);

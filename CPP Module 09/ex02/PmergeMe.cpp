@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/17 10:34:49 by mechane           #+#    #+#             */
+/*   Updated: 2023/09/17 11:57:45 by mechane          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PmergeMe.hpp"
 
 void mergeVector(std::vector<std::size_t> &v,std::vector<std::size_t> &left,std::vector<std::size_t> &right)
@@ -20,20 +32,6 @@ void mergeVector(std::vector<std::size_t> &v,std::vector<std::size_t> &left,std:
         v[k++]=right[j++];
 }
 
-void mergeSortVector(std::vector<std::size_t> &v)
-{
-    int size = (int)v.size();
-    if (size < 8)
-        return;
-    int midIndex = size/2;
-    std::vector<std::size_t> left(v.begin(),v.begin()+midIndex);
-    std::vector<std::size_t> right(v.begin()+midIndex,v.end());
-    mergeSortVector(left);
-    mergeSortVector(right);
-    mergeVector(v,left,right);
-
-}
-
 void insertionSortVector(std::vector<std::size_t> &v)
 {
     for (int i =1;i < (int)v.size();i++)
@@ -49,15 +47,31 @@ void insertionSortVector(std::vector<std::size_t> &v)
     }
 }
 
-std::clock_t mergeInsertionSortVector(std::vector<std::size_t> &v)
+std::clock_t mergeInsertionSortVector(std::vector<std::size_t> &v, size_t k)
 {
     std::clock_t timeAtStart = clock();
-    
-    mergeSortVector(v);
-    insertionSortVector(v);
-    
+
+	int size = (int)v.size();
+	if (k < 1)
+    {
+        mergeInsertionSortVector(v, 2);
+        return clock() - timeAtStart;
+    }
+    if (v.size() < k)
+    {
+        insertionSortVector(v);
+        return clock() - timeAtStart;
+    }
+    int midIndex = size/2;
+    std::vector<std::size_t> left(v.begin(),v.begin()+midIndex);
+    std::vector<std::size_t> right(v.begin()+midIndex,v.end());
+    mergeInsertionSortVector(left, k);
+    mergeInsertionSortVector(right, k);
+    mergeVector(v,left,right);
+
     return clock() - timeAtStart;
 }
+
 
 
 
@@ -74,7 +88,7 @@ void insert(std::deque <std::size_t> &dq)
 		}
 		dq[j + 1] = key;
 	}
-    
+
 }
 
 void merge(std::deque <std::size_t> &dq, std::deque <std::size_t> &left, std::deque <std::size_t> &right)
@@ -108,7 +122,7 @@ void merge(std::deque <std::size_t> &dq, std::deque <std::size_t> &left, std::de
 std::clock_t    insertionSortDeque(std::deque <std::size_t> &dq, size_t k)
 {
     std::clock_t timeAtStart = clock();
-    
+
     if (k < 1)
     {
         insertionSortDeque(dq, 2);
