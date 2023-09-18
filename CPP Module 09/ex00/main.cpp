@@ -6,43 +6,44 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/17 13:58:53 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/18 11:27:01 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 
-static const char	*dateValide(std::string date)
+static const char	*dateValide(std::string dat)
 {
-
-
-    if (date.size() != 10)
+    if (dat.size() != 10)
         return ("Error : Missing value.\n");
 
-    for (int i = 0; i < 10; i++) {
-        if (i != 4 && i != 7) {
-            if (!isdigit(date[i]))
+    for (int i = 0; i < 10; i++)
+	{
+        if (i != 4 && i != 7)
+            if (!isdigit(dat[i]))
                 return ("Error : Bad date.\n");
-        } else if (date[i] != '-') {
-            return ("Error : Bad date.\n");
-        }
+        else
+			if(dat[i] != '-')
+            	return ("Error : Bad date.\n");
     }
 
-    int yr, mth, day;
-    yr = std::stoi(date.substr(0, 4));
-    mth = std::stoi(date.substr(5, 2));
-    day = std::stoi(date.substr(8, 2));
+    int year, month, day;
+
+	
+    year = std::stoi(dat.substr(0, 4));
+    month = std::stoi(dat.substr(5, 2));
+    day = std::stoi(dat.substr(8, 2));
 
 
-    if (yr < 2009|| yr > 2023 || mth < 1 || mth > 12 || day < 1 || day > 31)
+    if (year < 2009|| year > 2023 || month < 1 || month > 12 || day < 1 || day > 31)
         return ("Error : Bad date.\n");
-	if (mth == 2 && day > 28 && !(((yr % 4 == 0) && (yr % 100 != 0)) || yr % 400 == 0))
+	if (month == 2 && day > 28 && !(((year % 4 == 0) && (year % 100 != 0)) || year % 400 == 0))
 		return ("Error : Bad date.\n");
 
 	int month_limits[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-	if (day > month_limits[mth - 1])
+	if (day > month_limits[month - 1])
 		return ("Error : bad input (day) => ");
 
     return NULL;
