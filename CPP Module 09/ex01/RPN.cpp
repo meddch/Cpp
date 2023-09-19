@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:53:29 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/08 18:46:15 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/19 10:00:16 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ RPN & RPN::operator=(const RPN &other)
 {
 	if (this == &other)
 		return (*this);
-		
+
 	value = other.value;
 	type = other.type;
-	
+
 	return (*this);
 }
 
@@ -87,7 +87,7 @@ int RPN::Calcul(char *input)
     char token;
 	int left;
 	int right;
-	
+
     while (expr >> token)
 	{
 
@@ -98,19 +98,19 @@ int RPN::Calcul(char *input)
 
         if (tok.type == NBR)
             stack.push(tok.value);
-        
+
         else
 		{
 
             if (stack.size() < 2)
             	throw std::runtime_error("ERROR: bad input\n");
-                
+
             right = stack.top();
 			stack.pop();
             left = stack.top();
 			stack.pop();
 
-				
+
             stack.push(RPN::Res(left,right,tok.type));
         }
     }
@@ -119,4 +119,3 @@ int RPN::Calcul(char *input)
     return (stack.size() == 1 ? stack.top() :  throw std::runtime_error("ERROR: bad input\n"));
 
 }
-

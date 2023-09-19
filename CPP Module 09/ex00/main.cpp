@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:51:00 by mechane           #+#    #+#             */
-/*   Updated: 2023/09/18 11:27:01 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/19 09:13:39 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,20 @@ static const char	*dateValide(std::string dat)
     for (int i = 0; i < 10; i++)
 	{
         if (i != 4 && i != 7)
+		{
             if (!isdigit(dat[i]))
                 return ("Error : Bad date.\n");
+		}
         else
+		{
 			if(dat[i] != '-')
             	return ("Error : Bad date.\n");
+		}
     }
 
     int year, month, day;
 
-	
+
     year = std::stoi(dat.substr(0, 4));
     month = std::stoi(dat.substr(5, 2));
     day = std::stoi(dat.substr(8, 2));
@@ -80,6 +84,18 @@ static bool getCsv(std::ifstream& csv, std::map<std::string, double>& btc_map)
 	return false;
 }
 
+
+static bool is_str_digit(std::string value)
+{
+	for (size_t i = 0; i < value.length(); i++)
+	{
+		if (!isdigit(value[i]) && (value[i] != '.'|| (value.substr(i + 1)).find('.') != value.npos))
+            return false;
+	}
+	return true;
+}
+
+
 static bool getInput(std::ifstream& input, std::map<std::string, double>& btc_map)
 {
 	std::string buffer;
@@ -96,14 +112,21 @@ static bool getInput(std::ifstream& input, std::map<std::string, double>& btc_ma
 		std::string value;
 		std::string del;
 		std::istringstream iss(buffer);
+		std::string tmp;
 
-		iss >> date >> del >> value;
+		iss >> date >> del >> value >> tmp;
 
 
 		const char *msg = dateValide(date);
 		if (msg)
 		{
 			std::cout << "ERROR: bad date => " << date << std::endl;
+			continue;
+		}
+
+		if (!is_str_digit(value) || !tmp.empty())
+		{
+			std::cout << "ERROR: bad value => " << value << std::endl;
 			continue;
 		}
 
