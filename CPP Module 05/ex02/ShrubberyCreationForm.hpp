@@ -6,7 +6,7 @@
 /*   By: mechane <mechane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 18:13:38 by mechane           #+#    #+#             */
-/*   Updated: 2023/08/17 12:53:14 by mechane          ###   ########.fr       */
+/*   Updated: 2023/09/20 15:24:10 by mechane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 class ShrubberyCreationForm : public AForm
 {
 	const std::string		_target;
+		void execute( const Bureaucrat &executor ) const;
 	public:
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm& 	operator=(const ShrubberyCreationForm& other);
-		void execute( const Bureaucrat &executor ) const;
 };
 
 
