@@ -35,9 +35,9 @@ static const char	*dateValide(std::string dat)
     int year, month, day;
 
 
-    year = std::stoi(dat.substr(0, 4));
-    month = std::stoi(dat.substr(5, 2));
-    day = std::stoi(dat.substr(8, 2));
+    year = std::atoi(dat.substr(0, 4));
+    month = std::atoi(dat.substr(5, 2));
+    day = std::atoi(dat.substr(8, 2));
 
 
     if (year < 2009|| year > 2023 || month < 1 || month > 12 || day < 1 || day > 31)
