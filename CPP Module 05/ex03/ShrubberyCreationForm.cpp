@@ -31,13 +31,13 @@ void	ShrubberyCreationForm::execute( const Bureaucrat &exec) const
 	file.open((this->_target + "_shrubbery").c_str(), std::ios::out);
 	if (!file)
 		throw(FileNotOpen());
-    file << " 	    ^                  ^			        ^\n";
-    file << "       ^^^		          ^^^	     	       ^^^\n";
-    file << "      ^^^^^	    	     ^^^^^				  ^^^^^\n";
-    file << "     ^^^^^^^	        ^^^^^^^		   	     ^^^^^^^\n";
-    file << "    ^^^^^^^^^	       ^^^^^^^^^     	    ^^^^^^^^^\n";
-    file << "   ^^^^^^^^^^^	      ^^^^^^^^^^^	       ^^^^^^^^^^^\n";
-    file << "  ^^^^^^^^^^^^^    	 ^^^^^^^^^^^^^	      ^^^^^^^^^^^^^\n";
-    file << "        |	                |                   |\n";
+    file << " 	     ^ \n";
+    file << "       ^^^	\n"
+    file << "      ^^^^^\n"
+    file << "     ^^^^^^^\n"
+    file << "    ^^^^^^^^^\n"
+    file << "   ^^^^^^^^^^^"\n";
+    file << "  ^^^^^^^^^^^^^\m"
+    file << "        |	      \n";
 	file.close();
 }
